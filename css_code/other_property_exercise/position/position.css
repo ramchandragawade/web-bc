@@ -1,0 +1,43 @@
+div {
+    width: 100px;
+    height: 100px;
+    background-color: #264653;
+    border: 2px solid black;
+    margin: 10px;
+    display: inline-block;
+}
+
+#middle {
+    background-color: #a2d2ff;
+}
+
+#static #middle {
+    position: static;
+    top: 100px;
+}
+
+#relative #middle {
+    position: relative;
+    top: 50px;
+    left: 50px;
+}
+
+#absolute {
+    position: relative;
+}
+
+#absolute #middle {
+    position: absolute;
+    /* Absolute positions itself based on position of its "positioned" ancestor(element with position relative or absolute).
+    If there are nmo positioned ancestor then of body element*/
+    top: 0px;
+    /* top: 50px;
+    left: 50px; */
+}
+
+#fixed #middle {
+    position: fixed;
+    /* fixed nav bar component */
+    top: 0px;
+    left: 0px;
+}
