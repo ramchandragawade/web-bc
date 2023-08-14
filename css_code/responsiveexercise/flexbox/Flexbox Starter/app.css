@@ -7,11 +7,12 @@ h1 {
 #container {
     background-color: #003049;
     width: 90%;
-    height: 500px;
+    height: 1500px;
     margin: 0 auto;
     border: 5px solid #003049;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 #container div {
     width: 200px;
