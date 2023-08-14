@@ -1,0 +1,18 @@
+body {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+main {  
+    width: 60%;
+    margin: 0 auto;
+}
+
+h1 {
+    font-family: 'Dancing Script', cursive;
+    font-weight: 100;
+    font-size: 3em;
+}
+
+h1 + h2 {
+    margin-top: 10px;
+}
