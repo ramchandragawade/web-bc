@@ -11,15 +11,22 @@ h1 {
     margin: 0 auto;
     border: 5px solid #003049;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    align-content: space-between;
-    /* flex-wrap: wrap-reverse; */
+    align-items: flex-start;
+    /* align-content: flex-start;
+    flex-wrap: wrap-reverse; */
 }
 #container div {
-    width: 300px;
+    width: 200px;
     height: 200px;
     text-align: center;
+}
+
+div:nth-of-type(3){
+    align-self: flex-end;
+}
+
+div:nth-of-type(2){
+    align-self: center;
 }
