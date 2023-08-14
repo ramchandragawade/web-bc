@@ -1,0 +1,100 @@
+/* * {
+    color: purple;
+} */
+
+body {
+    background-color: #fefae0;
+}
+
+button {
+    font-size: 30px;
+    background-color: #606c38;
+}
+
+#signUpBtn {
+    background-color: #dda15e;
+}
+
+span {
+    color: #606c38;
+}
+.tags {
+    background-color: #bababa;
+}
+
+a{
+    color:#ffafcc;
+}
+
+h1,h2 {
+    color: #dda15e;
+}
+
+.posts a {
+    color: black;
+}
+
+footer a {
+    color: #606c38;
+}
+
+input + button {
+    background-color: teal;
+}
+
+/* Adjacent selector */
+h2 + button {
+    font-size: 20px;
+    background-color: aqua;
+}
+
+/* direct descendent selector */
+footer > a {
+    color: red;
+}
+
+input[type="password"] {
+    color: red;
+}
+
+/* section[class="posts"]{
+    background-color:black;
+} */
+
+a[href*="google"]{
+    color:pink;
+}
+
+/* psuedo classes */
+.posts a:hover{
+    text-decoration: red line-through;
+}
+
+.posts button:hover{
+    background-color: red;
+}
+
+.posts button:active {
+    background-color: white;
+}
+
+.posts:nth-of-type(2n) {
+    background-color: white;
+}
+
+/* psuedo elements*/
+h2::first-letter {
+    font-size: 40px;
+}
+p::first-line {
+    color: purple;
+}
+
+p::selection{
+    color:#dda15e
+}
+
+button:hover{
+    color: grey;
+    font-size: 10px;
+}

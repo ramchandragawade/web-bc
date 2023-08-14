@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="https://account.formula1.com/#/en/my-subscription">F1 Account</a>
+    <br>
+    <h2>H<sub>2</sub></h2> &spades; &hearts; &diamondsuit;
+    <!-- Comments -->
+    <div>
+    <img src="https://media.formula1.com/image/upload/content/dam/fom-website/manual/2023/Launches2023/Ferrari2023Launch/Ferrari%20front.jpg.transform/9col/image.jpg"
+     alt="Ferrari F1">
+    <br>I'm <span>IRONMAN</span><sup>TM</sup>&reg;
+    <hr>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th rowspan="2">POS</th>
+                <th rowspan="2">Driver</th>
+                <th rowspan="2">Nationality</th>
+                <th colspan="2">Constructor</th>
+            </tr>
+            <tr>
+                <th>Car</th>
+                <th>No.</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Max</td>
+                <td>Ned</td>    
+                <td>Red Bull</td>
+                <td>33</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Charles</td>
+                <td>MON</td>
+                <td>Ferrari</td>
+                <td>15</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Checo</td>
+                <td>Mex</td>
+                <td>Red Bull</td>
+                <td>3</td>
+            </tr>
+        </tbody>
+    </table>
+    <form action="/ferrari">
+        <input type="text" name="fn" placeholder="Enter firstname">
+        <br>
+        Gender:
+        <input type="radio" name="gender" id="m" value="M">
+        <label for="m">Male:</label>
+        <input type="radio" name="gender" id="f" value="F">
+        <label for="f">Female:</label>
+        <input type="radio" name="gender" id="o" value="O"><label for="o">Other:</label><br>
+        <input type="checkbox" name="agree_terms" id="agree">
+        <br><label for="fav_team">Fav team:</label>
+        <select name="fav_team" id="fav_team">
+            <option value="" selected>Please select your favourite team</option>
+            <option value="ferrari">Ferrari</option>
+            <option value="redbull">RedBull</option>
+            <option value="mercedes">Mercedes</option>
+        </select>
+        <input type="color" id="colour" name="colour">
+
+        <label for="salrange">Expected Salary cap:</label>
+        <input type="range" id="salrange" name="salRange" min="100" max="1000" step="100">
+        <input type="number" id="age" name="age" min="1" max="100" step="1" placeholder="enter age">
+        <br>
+        <label for="request">Enter any request for team</label>
+        <br>
+        <textarea id="request" name="request" rows="5" cols="50"></textarea>
+        <br>
+        <label for="agree">I agree to Terms & Conditions</label>
+        <button>Submit</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,31 @@
+h1 {
+    color: teal;
+    text-align: center;
+    font-weight: 400;
+}
+
+p {
+    font-weight: 600;
+    font-family: ;
+}
+
+a {
+    text-decoration: none;
+    font-family: Papyrus, monospace, arial;
+    color: red;
+}
+
+h2 {
+    font-size: 40px;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: purple underline wavy;
+}
+
+input {
+    color: rgb(14, 62, 220)
+}
+
+button {
+    background-color: teal;
+}
