@@ -1,0 +1,14 @@
+section {
+    width: 80%;
+    height: 800px;
+    background: center/cover url(https://d3pelj80y5v5k4.cloudfront.net/4e7f2a07-8719-499b-a7a1-b3853be74259?w=&h=&q=85&nu=1&webp=1);
+    /* background-image: url(https://d3pelj80y5v5k4.cloudfront.net/9f28f209-3077-428a-8699-d09a782fe4b3?w=&h=&q=85&nu=1&webp=1);
+    background-size: cover;
+    background-position: bottom;
+    margin: 0 auto; */
+}
+
+h1 {
+    font-size: 100px;
+    color: white;
+}
