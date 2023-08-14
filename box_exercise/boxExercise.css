@@ -1,3 +1,6 @@
+body {
+    margin:0;
+}
 div {
     width: 400px;
     background-color: aqua;
@@ -5,10 +8,16 @@ div {
 
 h1{
     background-color: pink;
-    width: 100px;
+    width: 200px;
     height:50px;
     padding-left: 30px;
     padding-top: 50px;
+    margin: 0;
+}
+
+span {
+    margin-top: 100px;
+    margin-left: 50px;
 }
 
 #one {
@@ -17,6 +26,8 @@ h1{
     border-color: black;
     border-style: solid;
     box-sizing: border-box;
+    margin-left: 50px;
+    margin-bottom: 50px;
 }
 
 #two {
@@ -26,6 +37,7 @@ h1{
     border-style: dashed;
     border-left-width: 8px;
     padding-right: 50px;
+    margin: 100px;
 }
 
 #three {
