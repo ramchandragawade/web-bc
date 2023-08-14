@@ -28,10 +28,32 @@ h1 {
 }
 
 div:nth-of-type(1){
-    flex-shrink: 3;
+    /* flex-shrink: 3; */
+    flex-grow: 1;
 }
 div:nth-of-type(5){
-    flex-shrink: 0;
+    flex-grow: 1;
+    /* flex-shrink: 0; */
+}
+
+main {
+    width: 80%;
+    margin: 0 auto;
+    border: 5px solid black;
+    height: 500px;
+    display: flex;
+}
+
+main .sidebar {
+    background-color: grey;
+    /* flex : grow,shrink,basis */
+    flex: 1 2 200px;
+    border: 1px solid white;
+}
+
+main .maincontent {
+    background-color: goldenrod;
+    flex: 2 1 800px;
 }
 
 /* div:nth-of-type(1){
