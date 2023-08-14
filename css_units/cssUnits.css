@@ -1,3 +1,7 @@
+html {
+    font-size: 20px;
+}
+
 section {
     background-color: #e9c46a;
     width: 800px;
@@ -18,17 +22,26 @@ h1 {
 article {
     font-size: 20px;
 }
-h2 {
+
+#ems ul {
+    font-size: 1.2em;
+}
+
+#ems h2 {
     font-size: 2em;
     margin: 1em;
 }
 
-p {
+#ems p {
     font-size: 1em;
 }
 
-h3 {
+#ems h3 {
     font-size: 1.5em;
+}
+
+#ems {
+    font-size: 15px;
 }
 
 button {
@@ -37,4 +50,21 @@ button {
     border-radius: 0.5em;
     background-color: #2a9d8f;
     color: white;
+}
+
+#rems ul{
+    font-size: 0.8rem;
+}
+
+#rems h3{
+    font-size: 3rem;
+}
+
+#rems h2{
+    font-size: 2rem;
+}
+
+
+#rems button {
+    font-size: 1.5rems;
 }
