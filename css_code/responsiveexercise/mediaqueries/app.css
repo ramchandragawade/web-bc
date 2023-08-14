@@ -1,0 +1,71 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+    font-size: 6em;
+    text-align: center;
+}
+nav {
+    font-size: 1.5em;
+}
+
+ul,li {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+/* @media (min-width:600px) and (max-width:800px) {
+    h1 {
+        color: purple;
+    }
+} */
+
+
+/* Define large width first so that it doesn't overwrite smaller ones */
+/* @media (max-width:1500px) {
+    h1 {
+        color: orange;
+    }
+}
+
+@media (max-width:1000px) {
+    h1 {
+        color: blue;
+    }
+}
+
+@media (max-width:500px) {
+    h1 {
+        color: red;
+    }
+} */
+
+h1 {
+    color: red;
+}
+
+@media (min-width:500px) {
+    h1{
+        color: yellow;
+    }
+}
+
+@media (min-width:1000px) {
+    h1{
+        color: purple;
+    }
+}
+
+@media (min-width:1500px) {
+    h1{
+        color: green;
+    }
+}
+
+@media (orientation:landscape) {
+    h1{
+        background-color: cyan;
+    }
+}
