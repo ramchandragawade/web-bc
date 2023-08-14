@@ -123,11 +123,12 @@ body {
     padding: 15px 35px;
     text-decoration: none;
     margin: 25px 0;
-    transition: background-color 200ms ease-in-out;
+    transition: all 0.25s ease-in-out;
 }
 
 .pricing-button:hover, .pricing-button:focus {
     background-color: #e1f1ff;
+    transform: scale(1.2);
 }
 
 .pricing-button.is-featured {
