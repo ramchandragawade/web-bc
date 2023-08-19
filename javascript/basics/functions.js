@@ -203,8 +203,12 @@ console.log(title);
 
 
 //Implicit return
-const rollDie = () =>(
-    Math.floor(Math.random()*6)+1
-);
-rollDie();
-const sum = (a,b)=>a+b;
+// const rollDie = () =>(
+//     Math.floor(Math.random()*6)+1
+// );
+// rollDie();
+// const sum = (a,b)=>a+b;
+// sum(40,66);
+
+// const movies = movieArr.map(item=>`${item.title} - ${item.rating}`);
+// console.log(movies)
