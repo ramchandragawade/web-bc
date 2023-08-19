@@ -119,18 +119,32 @@
 
 // hello.toUpperCase();
 
-try {
-    hello.toUpperCase();
-} catch {
-    console.log('ERRORRRRR!!!!');
-}
-console.log('After');
+// try {
+//     hello.toUpperCase();
+// } catch {
+//     console.log('ERRORRRRR!!!!');
+// }
+// console.log('After');
 
-function yell (msg) {
-    try{
-        console.log(msg.toUpperCase().repeat(3));
-    } catch (e) {
-        console.log('Please pass a string');
-        console.log(e);
-    }
+// function yell (msg) {
+//     try{
+//         console.log(msg.toUpperCase().repeat(3));
+//     } catch (e) {
+//         console.log('Please pass a string');
+//         console.log(e);
+//     }
+// }
+
+//Callbacks & Array func
+
+
+const numArr = [1,3,4,24,23,432,4324,23,432,423,2,1,1,12,23,4,34,3,43,33];
+function print (element) {
+    console.log(element);
 }
+
+numArr.forEach( function(item) {
+    if(item%2==0){
+        print("Even:" + item);
+    }
+});
