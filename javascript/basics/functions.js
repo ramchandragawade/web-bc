@@ -149,48 +149,56 @@
 //     }
 // });
 
-const movieArr = [
-    {
-        title: 'K3G',
-        rating: 4
-    },
-    {
-        title: 'K2H2',
-        rating: 3
-    },
-    {
-        title: '3 Idiots',
-        rating: 5
-    },
-    {
-        title: 'DON',
-        rating: 4
-    },
-    {
-        title: 'Krish',
-        rating: 3
-    },
-    {
-        title: 'Chennai exp',
-        rating: 4
-    }
-];
+// const movieArr = [
+//     {
+//         title: 'K3G',
+//         rating: 4
+//     },
+//     {
+//         title: 'K2H2',
+//         rating: 3
+//     },
+//     {
+//         title: '3 Idiots',
+//         rating: 5
+//     },
+//     {
+//         title: 'DON',
+//         rating: 4
+//     },
+//     {
+//         title: 'Krish',
+//         rating: 3
+//     },
+//     {
+//         title: 'Chennai exp',
+//         rating: 4
+//     },
+//     {
+//         title: 'Chennai exp',
+//         rating: 4
+//     },
+//     {
+//         title: 'Chennai exp',
+//         rating: 4
+//     }
+// ];
 
-movieArr.forEach(function(movie){
-    console.log(`${movie.title}-${movie.rating}`);
-});
+// movieArr.forEach(function(movie){
+//     console.log(`${movie.title}-${movie.rating}`);
+// });
 
-const numArr = [1,3,4,24,23,432,4324,23,432,423,2,1,1,12,23,4,34,3,43,33];
+// const numArr = [1,3,4,24,23,432,4324,23,432,423,2,1,1,12,23,4,34,3,43,33];
 
-const doubles = numArr.map (function(item){
-    return item*2;
-});
+// const doubles = numArr.map (function(item){
+//     return item*2;
+// });
 
-console.log(numArr,doubles);
-const title = movieArr.map(function(movie){
-    return movie.title;
-});
-console.log(title);
+// console.log(numArr,doubles);
+// const title = movieArr.map(function(movie){
+//     return movie.title;
+// });
+// console.log(title);
 
 //Arrow func
 // const square = (x)=>{
@@ -213,16 +221,19 @@ console.log(title);
 // const movies = movieArr.map(item=>`${item.title} - ${item.rating}`);
 // console.log(movies)
 
-console.log('Hello!!!!');
-setTimeout(()=>{
-    console.log('Are you still there??');
-}, 3000);
-console.log('Goodbye!!!!');
+// console.log('Hello!!!!');
+// setTimeout(()=>{
+//     console.log('Are you still there??');
+// }, 3000);
+// console.log('Goodbye!!!!');
 
-const itr = setInterval(()=>{
-    console.log(Math.random());
-},2000);
-setTimeout(()=>{
-    clearInterval(itr);
-    console.log('Stop interval');
-},20000);
+// const itr = setInterval(()=>{
+//     console.log(Math.random());
+// },2000);
+// setTimeout(()=>{
+//     clearInterval(itr);
+//     console.log('Stop interval');
+// },20000);
+
+//Filter
+
