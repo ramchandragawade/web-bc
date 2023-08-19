@@ -474,61 +474,87 @@
 // greet2('Raaj');
 
 
-//SPREAD
-const num = [2,4,6,8,10,12,14,16,18,20];
-console.log(Math.max(2,4,6,8,10,12,14,16,18,20));
-console.log(Math.max([2,4,6,8,10,12,14,16,18,20]));
-console.log(Math.max(...num));
+// //SPREAD
+// const num = [2,4,6,8,10,12,14,16,18,20];
+// console.log(Math.max(2,4,6,8,10,12,14,16,18,20));
+// console.log(Math.max([2,4,6,8,10,12,14,16,18,20]));
+// console.log(Math.max(...num));
 
-//SPREAD with array literals;
+// //SPREAD with array literals;
 
-const cats = ['lili','luca','lego','leo'];
-const dogs = ['tom','zen','love','kuma'];
+// const cats = ['lili','luca','lego','leo'];
+// const dogs = ['tom','zen','love','kuma'];
 
-const allPets =[...cats,...dogs];
-console.log(cats);
-console.log(dogs);
-console.log(allPets);
+// const allPets =[...cats,...dogs];
+// console.log(cats);
+// console.log(dogs);
+// console.log(allPets);
 
-//SPREAD with objects;
+// //SPREAD with objects;
 
-const student = {
-    name: 'Raaj',
-    family: 'Gawade'
-};
-const teacher = {
-    name: 'Ram',
-    degree: false,
-    family: 'Gawade'
-};
+// const student = {
+//     name: 'Raaj',
+//     family: 'Gawade'
+// };
+// const teacher = {
+//     name: 'Ram',
+//     degree: false,
+//     family: 'Gawade'
+// };
 
-const postGradStud = {
-    ...student,
-    degree: true
-};
+// const postGradStud = {
+//     ...student,
+//     degree: true
+// };
 
-const studTeacherCombo = {
-    ...teacher,
-    ...postGradStud
-    //degree will overwrite as per order
+// const studTeacherCombo = {
+//     ...teacher,
+//     ...postGradStud
+//     //degree will overwrite as per order
+// }
+
+// console.log(student);
+// console.log(teacher);
+// console.log(postGradStud);
+// console.log(studTeacherCombo);
+
+
+// const dataFromForm = {
+//     email: 'asdasd@gmail.com',
+//     pass: 'asdasd123123',
+//     username: 'qwerewqr'
+// }
+// console.log(dataFromForm);
+
+// const storeDataInDB = {
+//     ...dataFromForm,
+//     id: 123234,
+//     isAdmin: false
+// }
+// console.log(storeDataInDB);
+
+//REST params
+
+function sum() {
+    console.log(arguments);
+}
+sum();
+sum(3,4,5);
+
+function sum1(...nums) {
+    console.log(nums)
+}
+sum1(3,34,33,33,3,32);
+
+function sumAll (...nums) {
+    console.log('Sum:'+nums.reduce((sum,item)=>sum+item));
+}
+sumAll(3,34,33,33,3,32);
+
+function display(gold,silver,...everyoneelse) {
+    console.log(`Gold winner: ${gold}`);
+    console.log(`Silver winner: ${silver}`);
+    console.log(`Thanks for pariticipation: ${everyoneelse}`);
 }
 
-console.log(student);
-console.log(teacher);
-console.log(postGradStud);
-console.log(studTeacherCombo);
-
-
-const dataFromForm = {
-    email: 'asdasd@gmail.com',
-    pass: 'asdasd123123',
-    username: 'qwerewqr'
-}
-console.log(dataFromForm);
-
-const storeDataInDB = {
-    ...dataFromForm,
-    id: 123234,
-    isAdmin: false
-}
-console.log(storeDataInDB);
+display('Raaj','Ram','asdasd','Rasaa','TTTT','QQQQQ');
