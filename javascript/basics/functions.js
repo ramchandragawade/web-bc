@@ -191,3 +191,13 @@ const title = movieArr.map(function(movie){
     return movie.title;
 });
 console.log(title);
+
+//Arrow func
+const square = (x)=>{
+    return x*x;
+}
+
+const cube = x=>{
+    return x*x*x;
+}
+const sum = (a,b)=>a+b;
