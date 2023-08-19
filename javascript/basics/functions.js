@@ -193,11 +193,18 @@ const title = movieArr.map(function(movie){
 console.log(title);
 
 //Arrow func
-const square = (x)=>{
-    return x*x;
-}
+// const square = (x)=>{
+//     return x*x;
+// }
 
-const cube = x=>{
-    return x*x*x;
-}
+// const cube = x=>{
+//     return x*x*x;
+// }
+
+
+//Implicit return
+const rollDie = () =>(
+    Math.floor(Math.random()*6)+1
+);
+rollDie();
 const sum = (a,b)=>a+b;
