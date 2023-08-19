@@ -88,15 +88,29 @@
 
 //THIS
 
-const cat = {
-    name: 'Blue steele',
-    color: 'grey',
-    breed: 'scottish fold',
-    meow() {
-        console.log(`${this.name} says MEOOOWWWW`);
+// const cat = {
+//     name: 'Blue steele',
+//     color: 'grey',
+//     breed: 'scottish fold',
+//     meow() {
+//         console.log(`${this.name} says MEOOOWWWW`);
+//     }
+// }
+
+// cat.meow();
+// const c = cat.meow;
+// c();
+
+const hen = {
+    name: 'Helen',
+    eggCount: 0,
+    layAnEgg () {
+        this.eggCount = this.eggCount+1;
+        return "EGG";
     }
 }
-
-cat.meow();
-const c = cat.meow;
-c();
+hen.eggCount;
+hen.layAnEgg()
+hen.eggCount;
+hen.layAnEgg()
+hen.eggCount;
