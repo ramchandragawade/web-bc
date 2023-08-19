@@ -309,104 +309,137 @@
 
 //REDUCE
 
-const results = [34,54,66,77,22,88,45,53,65,73,90,23,43,52,78,90,99,67];
+// const results = [34,54,66,77,22,88,45,53,65,73,90,23,43,52,78,90,99,67];
 
-const sumOfAll = results.reduce((sum,res)=>{
-    return sum+res;
-});
-console.log(sumOfAll)
-const min= results.reduce((min,res)=>{
-    if(min<res){
-        return min;
-    } else {
-        return res;
+// const sumOfAll = results.reduce((sum,res)=>{
+//     return sum+res;
+// });
+// console.log(sumOfAll)
+// const min= results.reduce((min,res)=>{
+//     if(min<res){
+//         return min;
+//     } else {
+//         return res;
+//     }
+// });
+
+// console.log(min);
+// const max= results.reduce((max,res)=>{
+//     if(max>res){
+//         return max;
+//     } else {
+//         return res;
+//     }
+// });
+// console.log(max);
+
+// const movieArr = [
+//     {
+//         title: 'K3G',
+//         rating: 4,
+//         year: 2003
+//     },
+//     {
+//         title: 'K2H2',
+//         rating: 3,
+//         year: 2001
+//     },
+//     {
+//         title: '3 Idiots',
+//         rating: 5,
+//         year: 2010
+//     },
+//     {
+//         title: 'DON',
+//         rating: 4,
+//         year: 2009
+//     },
+//     {
+//         title: 'Krish',
+//         rating: 3,
+//         year: 2013
+//     },
+//     {
+//         title: 'Chennai exp',
+//         rating: 4,
+//         year: 2016
+//     },
+//     {
+//         title: 'DDLJ',
+//         rating: 4,
+//         year: 1995
+//     },
+//     {
+//         title: 'Sholay',
+//         rating: 3,
+//         year: 1970
+//     },
+//     {
+//         title: 'Om Shanti Om',
+//         rating: 4,
+//         year: 2008
+//     },
+//     {
+//         title: 'Avengers',
+//         rating: 5,
+//         year: 2012
+//     },
+//     {
+//         title: 'IronMan',
+//         rating: 4,
+//         year: 2008
+//     }
+// ];
+
+// const highestRatedMovie = movieArr.reduce((high,currentMovie)=>{
+//     if(currentMovie.rating>high.rating){
+//         return currentMovie;
+//     }
+//     return high;
+// });
+
+// console.log(highestRatedMovie);
+
+// //Initial val for reduce
+// const evens = [2,4,6,8,10,12,14,16,18,20];
+// const evenSum = evens.reduce((acc,item)=>{
+//     return acc+item;
+// });
+// console.log(evenSum);
+// const evenSumWithInit = evens.reduce((acc,item)=>{
+//     return acc+item;
+// },100);
+// console.log(evenSumWithInit);
+
+//ARROW & THIS
+const person = {
+    fn: 'Cristiano',
+    ln: 'Ronaldo',
+    fullName (){
+        return `${this.fn} ${this.ln}`;
+    },
+    full: ()=>{
+        return `${this.fn} ${this.ln}`;
+    },
+    shoutName: function(){
+        setTimeout(function(){
+            // Using normal func setTimeout uses this as the window obj
+            console.log(this);
+            console.log(this.full());
+            console.log(this.fullName());
+        },2000);
+    },
+    shoutName2: function(){
+        setTimeout(()=>{
+            // Using arrow func inside setTimeout uses this as the obj
+            console.log(this);
+            console.log(this.full());
+            console.log(this.fullName());
+        },2000);
     }
-});
+}
 
-console.log(min);
-const max= results.reduce((max,res)=>{
-    if(max>res){
-        return max;
-    } else {
-        return res;
-    }
-});
-console.log(max);
-
-const movieArr = [
-    {
-        title: 'K3G',
-        rating: 4,
-        year: 2003
-    },
-    {
-        title: 'K2H2',
-        rating: 3,
-        year: 2001
-    },
-    {
-        title: '3 Idiots',
-        rating: 5,
-        year: 2010
-    },
-    {
-        title: 'DON',
-        rating: 4,
-        year: 2009
-    },
-    {
-        title: 'Krish',
-        rating: 3,
-        year: 2013
-    },
-    {
-        title: 'Chennai exp',
-        rating: 4,
-        year: 2016
-    },
-    {
-        title: 'DDLJ',
-        rating: 4,
-        year: 1995
-    },
-    {
-        title: 'Sholay',
-        rating: 3,
-        year: 1970
-    },
-    {
-        title: 'Om Shanti Om',
-        rating: 4,
-        year: 2008
-    },
-    {
-        title: 'Avengers',
-        rating: 5,
-        year: 2012
-    },
-    {
-        title: 'IronMan',
-        rating: 4,
-        year: 2008
-    }
-];
-
-const highestRatedMovie = movieArr.reduce((high,currentMovie)=>{
-    if(currentMovie.rating>high.rating){
-        return currentMovie;
-    }
-    return high;
-});
-
-console.log(highestRatedMovie);
-
-//Initial val for reduce
-const evens = [2,4,6,8,10,12,14,16,18,20];
-const evenSum = evens.reduce((acc,item)=>{
-    return acc+item;
-});
-console.log(evenSum);
-const evenSumWithInit = evens.reduce((acc,item)=>{
-    return acc+item;
-},100);
-console.log(evenSumWithInit);
+console.log(person.fullName());
+console.log(person.full());
+person.shoutName();
+person.shoutName2();
