@@ -535,26 +535,45 @@
 
 //REST params
 
-function sum() {
-    console.log(arguments);
-}
-sum();
-sum(3,4,5);
+// function sum() {
+//     console.log(arguments);
+// }
+// sum();
+// sum(3,4,5);
 
-function sum1(...nums) {
-    console.log(nums)
-}
-sum1(3,34,33,33,3,32);
+// function sum1(...nums) {
+//     console.log(nums)
+// }
+// sum1(3,34,33,33,3,32);
 
-function sumAll (...nums) {
-    console.log('Sum:'+nums.reduce((sum,item)=>sum+item));
-}
-sumAll(3,34,33,33,3,32);
+// function sumAll (...nums) {
+//     console.log('Sum:'+nums.reduce((sum,item)=>sum+item));
+// }
+// sumAll(3,34,33,33,3,32);
 
-function display(gold,silver,...everyoneelse) {
-    console.log(`Gold winner: ${gold}`);
-    console.log(`Silver winner: ${silver}`);
-    console.log(`Thanks for pariticipation: ${everyoneelse}`);
-}
+// function display(gold,silver,...everyoneelse) {
+//     console.log(`Gold winner: ${gold}`);
+//     console.log(`Silver winner: ${silver}`);
+//     console.log(`Thanks for pariticipation: ${everyoneelse}`);
+// }
 
-display('Raaj','Ram','asdasd','Rasaa','TTTT','QQQQQ');
+// display('Raaj','Ram','asdasd','Rasaa','TTTT','QQQQQ');
+
+
+//DESTRUCTING ARRAY
+
+const descnScoreRollno = [34,54,66,77,22,88,45,53,65,73,90,23,43,52,78,90,99,67];
+
+const highScore = descnScoreRollno[0];
+const secondhigh = descnScoreRollno[1];
+
+console.log(highScore,secondhigh);
+
+const [first,second] = descnScoreRollno;
+console.log(`First:${first}`);
+console.log(`Second:${second}`);
+
+const [gold,silver,...everyoneelse] = descnScoreRollno;
+console.log(`Gold:${gold}`);
+console.log(`Silver:${silver}`);
+console.log(`Others:${everyoneelse}`);
