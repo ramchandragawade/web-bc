@@ -178,4 +178,16 @@ const movieArr = [
 
 movieArr.forEach(function(movie){
     console.log(`${movie.title}-${movie.rating}`);
-})
+});
+
+const numArr = [1,3,4,24,23,432,4324,23,432,423,2,1,1,12,23,4,34,3,43,33];
+
+const doubles = numArr.map (function(item){
+    return item*2;
+});
+
+console.log(numArr,doubles);
+const title = movieArr.map(function(movie){
+    return movie.title;
+});
+console.log(title);
