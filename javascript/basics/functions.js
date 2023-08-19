@@ -212,3 +212,17 @@ console.log(title);
 
 // const movies = movieArr.map(item=>`${item.title} - ${item.rating}`);
 // console.log(movies)
+
+console.log('Hello!!!!');
+setTimeout(()=>{
+    console.log('Are you still there??');
+}, 3000);
+console.log('Goodbye!!!!');
+
+const itr = setInterval(()=>{
+    console.log(Math.random());
+},2000);
+setTimeout(()=>{
+    clearInterval(itr);
+    console.log('Stop interval');
+},20000);
