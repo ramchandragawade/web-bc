@@ -472,3 +472,63 @@
 //     console.log(`${msg},${person}`);
 // }
 // greet2('Raaj');
+
+
+//SPREAD
+const num = [2,4,6,8,10,12,14,16,18,20];
+console.log(Math.max(2,4,6,8,10,12,14,16,18,20));
+console.log(Math.max([2,4,6,8,10,12,14,16,18,20]));
+console.log(Math.max(...num));
+
+//SPREAD with array literals;
+
+const cats = ['lili','luca','lego','leo'];
+const dogs = ['tom','zen','love','kuma'];
+
+const allPets =[...cats,...dogs];
+console.log(cats);
+console.log(dogs);
+console.log(allPets);
+
+//SPREAD with objects;
+
+const student = {
+    name: 'Raaj',
+    family: 'Gawade'
+};
+const teacher = {
+    name: 'Ram',
+    degree: false,
+    family: 'Gawade'
+};
+
+const postGradStud = {
+    ...student,
+    degree: true
+};
+
+const studTeacherCombo = {
+    ...teacher,
+    ...postGradStud
+    //degree will overwrite as per order
+}
+
+console.log(student);
+console.log(teacher);
+console.log(postGradStud);
+console.log(studTeacherCombo);
+
+
+const dataFromForm = {
+    email: 'asdasd@gmail.com',
+    pass: 'asdasd123123',
+    username: 'qwerewqr'
+}
+console.log(dataFromForm);
+
+const storeDataInDB = {
+    ...dataFromForm,
+    id: 123234,
+    isAdmin: false
+}
+console.log(storeDataInDB);
