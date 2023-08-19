@@ -138,13 +138,44 @@
 //Callbacks & Array func
 
 
-const numArr = [1,3,4,24,23,432,4324,23,432,423,2,1,1,12,23,4,34,3,43,33];
-function print (element) {
-    console.log(element);
-}
+// const numArr = [1,3,4,24,23,432,4324,23,432,423,2,1,1,12,23,4,34,3,43,33];
+// function print (element) {
+//     console.log(element);
+// }
 
-numArr.forEach( function(item) {
-    if(item%2==0){
-        print("Even:" + item);
+// numArr.forEach( function(item) {
+//     if(item%2==0){
+//         print("Even:" + item);
+//     }
+// });
+
+const movieArr = [
+    {
+        title: 'K3G',
+        rating: 4
+    },
+    {
+        title: 'K2H2',
+        rating: 3
+    },
+    {
+        title: '3 Idiots',
+        rating: 5
+    },
+    {
+        title: 'DON',
+        rating: 4
+    },
+    {
+        title: 'Krish',
+        rating: 3
+    },
+    {
+        title: 'Chennai exp',
+        rating: 4
     }
-});
+];
+
+movieArr.forEach(function(movie){
+    console.log(`${movie.title}-${movie.rating}`);
+})
