@@ -560,20 +560,58 @@
 // display('Raaj','Ram','asdasd','Rasaa','TTTT','QQQQQ');
 
 
-//DESTRUCTING ARRAY
+//DESTRUCTURING ARRAY
 
-const descnScoreRollno = [34,54,66,77,22,88,45,53,65,73,90,23,43,52,78,90,99,67];
+// const descnScoreRollno = [34,54,66,77,22,88,45,53,65,73,90,23,43,52,78,90,99,67];
 
-const highScore = descnScoreRollno[0];
-const secondhigh = descnScoreRollno[1];
+// const highScore = descnScoreRollno[0];
+// const secondhigh = descnScoreRollno[1];
 
-console.log(highScore,secondhigh);
+// console.log(highScore,secondhigh);
 
-const [first,second] = descnScoreRollno;
-console.log(`First:${first}`);
-console.log(`Second:${second}`);
+// const [first,second] = descnScoreRollno;
+// console.log(`First:${first}`);
+// console.log(`Second:${second}`);
 
-const [gold,silver,...everyoneelse] = descnScoreRollno;
-console.log(`Gold:${gold}`);
-console.log(`Silver:${silver}`);
-console.log(`Others:${everyoneelse}`);
+// const [gold,silver,...everyoneelse] = descnScoreRollno;
+// console.log(`Gold:${gold}`);
+// console.log(`Silver:${silver}`);
+// console.log(`Others:${everyoneelse}`);
+
+// DESTRUCTURING OBJECT
+
+const user = {
+    email: 'myeamema@gmail.com',
+    pass: '12asdasdas12',
+    fn: 'Harvey',
+    ln: 'Dent',
+    born: 1950,
+    died: 2020,
+    bio: 'Hi my guyasdhashdkasjbdjasbjshbdjhasdhasdjhaskd',
+    city: 'Mumbai',
+    state: 'Maharashtra'
+}
+
+// const fname = user.fn;
+// const lname = user.ln
+
+// const {email,born,died,city} = user;
+
+// console.log(email,born,died,city);
+
+// const {ln:lastName, fn:firstName} = user;
+// console.log(lastName,firstName);
+
+const user2 = {
+    email: 'ppppp@gmai.com',
+    fn: 'Stacy',
+    ln: 'Max',
+    born: 1997,
+    city: 'Pune',
+    state: 'Maharashtra'
+}
+
+// const {city,state,died='N/A'} = user2
+// console.log(state,city,died);
+const {city,state,died:deathYear='N/A'} = user2
+console.log(state,city,deathYear);
