@@ -580,38 +580,133 @@
 
 // DESTRUCTURING OBJECT
 
-const user = {
-    email: 'myeamema@gmail.com',
-    pass: '12asdasdas12',
-    fn: 'Harvey',
-    ln: 'Dent',
-    born: 1950,
-    died: 2020,
-    bio: 'Hi my guyasdhashdkasjbdjasbjshbdjhasdhasdjhaskd',
-    city: 'Mumbai',
-    state: 'Maharashtra'
-}
+// const user = {
+//     email: 'myeamema@gmail.com',
+//     pass: '12asdasdas12',
+//     fn: 'Harvey',
+//     ln: 'Dent',
+//     born: 1950,
+//     died: 2020,
+//     bio: 'Hi my guyasdhashdkasjbdjasbjshbdjhasdhasdjhaskd',
+//     city: 'Mumbai',
+//     state: 'Maharashtra'
+// }
 
-// const fname = user.fn;
-// const lname = user.ln
+// // const fname = user.fn;
+// // const lname = user.ln
 
-// const {email,born,died,city} = user;
+// // const {email,born,died,city} = user;
 
-// console.log(email,born,died,city);
+// // console.log(email,born,died,city);
 
-// const {ln:lastName, fn:firstName} = user;
-// console.log(lastName,firstName);
+// // const {ln:lastName, fn:firstName} = user;
+// // console.log(lastName,firstName);
 
-const user2 = {
-    email: 'ppppp@gmai.com',
-    fn: 'Stacy',
-    ln: 'Max',
-    born: 1997,
-    city: 'Pune',
-    state: 'Maharashtra'
-}
+// const user2 = {
+//     email: 'ppppp@gmai.com',
+//     fn: 'Stacy',
+//     ln: 'Max',
+//     born: 1997,
+//     city: 'Pune',
+//     state: 'Maharashtra'
+// }
 
-// const {city,state,died='N/A'} = user2
-// console.log(state,city,died);
-const {city,state,died:deathYear='N/A'} = user2
-console.log(state,city,deathYear);
+// // const {city,state,died='N/A'} = user2
+// // console.log(state,city,died);
+// const {city,state,died:deathYear='N/A'} = user2
+// console.log(state,city,deathYear);
+
+//Destructure PARAMS
+
+// const user = {
+//     email: 'ppppp@gmai.com',
+//     fn: 'Stacy',
+//     ln: 'Max',
+//     born: 1997,
+//     city: 'Pune',
+//     state: 'Maharashtra'
+// }
+// function fullName(user) {
+//     return `${user.fn},${user.ln}`;
+// }
+
+//With destructure after getting obj
+// function fullName(user) {
+//     const {fn,ln} = user
+//     return `${fn},${ln}`;
+// }
+//With destructure in params
+// function fullName({fn,ln}) {
+//     return `${ln},${fn}`;
+// }
+// console.log(fullName(user));
+
+
+const movieArr = [
+    {
+        title: 'K3G',
+        rating: 4,
+        year: 2003
+    },
+    {
+        title: 'K2H2',
+        rating: 3,
+        year: 2001
+    },
+    {
+        title: '3 Idiots',
+        rating: 5,
+        year: 2010
+    },
+    {
+        title: 'DON',
+        rating: 4,
+        year: 2009
+    },
+    {
+        title: 'Krish',
+        rating: 3,
+        year: 2013
+    },
+    {
+        title: 'Chennai exp',
+        rating: 4,
+        year: 2016
+    },
+    {
+        title: 'DDLJ',
+        rating: 4,
+        year: 1995
+    },
+    {
+        title: 'Sholay',
+        rating: 3,
+        year: 1970
+    },
+    {
+        title: 'Om Shanti Om',
+        rating: 4,
+        year: 2008
+    },
+    {
+        title: 'Avengers',
+        rating: 5,
+        year: 2012
+    },
+    {
+        title: 'IronMan',
+        rating: 4,
+        year: 2008
+    }
+];
+
+// const highRatedMovie = movieArr.filter(item=>item.rating>=4);
+// console.log(highRatedMovie);
+
+// With destructure in params
+const highRatedMovie = movieArr.filter(({rating})=>rating>=4);
+console.log(highRatedMovie);
+
+//With destructure in params
+const allMovieTitleScore = movieArr.map(({title,year,rating})=>`${title} released in ${year} is rated: ${rating}`);
+console.log(allMovieTitleScore);
