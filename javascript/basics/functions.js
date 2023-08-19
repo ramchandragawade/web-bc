@@ -69,19 +69,34 @@
 
 
 //Method: function defined as a property is method. All methods are function but not vice versa;
-const myMath = {
-    PI: 3.14,
-    square: function (num){
-        return num*num;
-    },
-    cube: function (num){
-        return num*num*num;
-    },
-    sub(num1,num2){
-        return num1-num2;
+// const myMath = {
+//     PI: 3.14,
+//     square: function (num){
+//         return num*num;
+//     },
+//     cube: function (num){
+//         return num*num*num;
+//     },
+//     sub(num1,num2){
+//         return num1-num2;
+//     }
+// }
+
+// console.log(myMath.cube(2));
+// console.log(myMath.square(3));
+// console.log(myMath.sub(11,5));
+
+//THIS
+
+const cat = {
+    name: 'Blue steele',
+    color: 'grey',
+    breed: 'scottish fold',
+    meow() {
+        console.log(`${this.name} says MEOOOWWWW`);
     }
 }
 
-console.log(myMath.cube(2));
-console.log(myMath.square(3));
-console.log(myMath.sub(11,5));
+cat.meow();
+const c = cat.meow;
+c();
