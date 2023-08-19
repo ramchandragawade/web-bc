@@ -7,3 +7,13 @@
 // console.log(radius);
 // console.log(msg); // doesn't exists since block scoped
 
+// function bankRoberry() {
+//     const heroes = ['Spidey', 'IronMan', 'Cap', 'BP'];
+//     function cryForHelp(){
+//         for(let hero of heroes) {
+//             console.log(`Please help us, ${hero}`);
+//         }
+//     }
+//     cryForHelp();
+// }
+// bankRoberry();
