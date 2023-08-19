@@ -412,34 +412,63 @@
 // console.log(evenSumWithInit);
 
 //ARROW & THIS
-const person = {
-    fn: 'Cristiano',
-    ln: 'Ronaldo',
-    fullName (){
-        return `${this.fn} ${this.ln}`;
-    },
-    full: ()=>{
-        return `${this.fn} ${this.ln}`;
-    },
-    shoutName: function(){
-        setTimeout(function(){
-            // Using normal func setTimeout uses this as the window obj
-            console.log(this);
-            console.log(this.full());
-            console.log(this.fullName());
-        },2000);
-    },
-    shoutName2: function(){
-        setTimeout(()=>{
-            // Using arrow func inside setTimeout uses this as the obj
-            console.log(this);
-            console.log(this.full());
-            console.log(this.fullName());
-        },2000);
-    }
-}
+// const person = {
+//     fn: 'Cristiano',
+//     ln: 'Ronaldo',
+//     fullName (){
+//         return `${this.fn} ${this.ln}`;
+//     },
+//     full: ()=>{
+//         return `${this.fn} ${this.ln}`;
+//     },
+//     shoutName: function(){
+//         setTimeout(function(){
+//             // Using normal func setTimeout uses this as the window obj
+//             console.log(this);
+//             console.log(this.full());
+//             console.log(this.fullName());
+//         },2000);
+//     },
+//     shoutName2: function(){
+//         setTimeout(()=>{
+//             // Using arrow func inside setTimeout uses this as the obj
+//             console.log(this);
+//             console.log(this.full());
+//             console.log(this.fullName());
+//         },2000);
+//     }
+// }
 
-console.log(person.fullName());
-console.log(person.full());
-person.shoutName();
-person.shoutName2();
+// console.log(person.fullName());
+// console.log(person.full());
+// person.shoutName();
+// person.shoutName2();
+
+//Default params
+// Old way
+// function rollDie(numSides){
+//     if(numSides===undefined){
+//         numSides=6
+//     }
+//     return Math.floor(Math.random()*numSides)+1;
+// }
+// rollDie();
+
+//new way
+// function rollDie(numSides=6){
+//     if(numSides===undefined){
+//         numSides=6
+//     }
+//     return Math.floor(Math.random()*numSides)+1;
+// }
+// console.log(rollDie());
+
+// function greet1(msg,person){
+//     console.log(`${msg},${person}`);
+// }
+// greet1('Hiiii','Raaj');
+
+// function greet2(person,msg='Hi there!!'){
+//     console.log(`${msg},${person}`);
+// }
+// greet2('Raaj');
