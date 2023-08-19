@@ -236,4 +236,68 @@
 // },20000);
 
 //Filter
+const movieArr = [
+    {
+        title: 'K3G',
+        rating: 4,
+        year: 2003
+    },
+    {
+        title: 'K2H2',
+        rating: 3,
+        year: 2001
+    },
+    {
+        title: '3 Idiots',
+        rating: 5,
+        year: 2010
+    },
+    {
+        title: 'DON',
+        rating: 4,
+        year: 2009
+    },
+    {
+        title: 'Krish',
+        rating: 3,
+        year: 2013
+    },
+    {
+        title: 'Chennai exp',
+        rating: 4,
+        year: 2016
+    },
+    {
+        title: 'DDLJ',
+        rating: 4,
+        year: 1995
+    },
+    {
+        title: 'Sholay',
+        rating: 3,
+        year: 1970
+    },
+    {
+        title: 'Om Shanti Om',
+        rating: 4,
+        year: 2008
+    },
+    {
+        title: 'Avengers',
+        rating: 5,
+        year: 2012
+    },
+    {
+        title: 'IronMan',
+        rating: 4,
+        year: 2008
+    }
+];
+console.log();
 
+const goodMovies = movieArr.filter(movie=>movie.rating>=4);
+const recentMovies = movieArr.filter(movie=>movie.year>=2010);
+console.log(goodMovies);
+console.log(recentMovies);
+const avgMovieTitle = movieArr.filter(movie=>movie.rating<4).map(movie=>movie.title);
+console.log(avgMovieTitle);
