@@ -101,16 +101,27 @@
 // const c = cat.meow;
 // c();
 
-const hen = {
-    name: 'Helen',
-    eggCount: 0,
-    layAnEgg () {
-        this.eggCount = this.eggCount+1;
-        return "EGG";
-    }
+// const hen = {
+//     name: 'Helen',
+//     eggCount: 0,
+//     layAnEgg () {
+//         this.eggCount = this.eggCount+1;
+//         return "EGG";
+//     }
+// }
+// hen.eggCount;
+// hen.layAnEgg()
+// hen.eggCount;
+// hen.layAnEgg()
+// hen.eggCount;
+
+// Using try/catch
+
+// hello.toUpperCase();
+
+try {
+    hello.toUpperCase();
+} catch {
+    console.log('ERRORRRRR!!!!');
 }
-hen.eggCount;
-hen.layAnEgg()
-hen.eggCount;
-hen.layAnEgg()
-hen.eggCount;
+console.log('After')
