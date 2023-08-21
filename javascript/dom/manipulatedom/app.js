@@ -84,9 +84,9 @@
 //older way to remove
 //go to parent and then remove the child
 
-fli = document.querySelector('li')
-ul = fli.parentElement
-ul.removeChild(fli)
+// fli = document.querySelector('li')
+// ul = fli.parentElement
+// ul.removeChild(fli)
 
-//new way, directly remove
-fli.remove();
+// //new way, directly remove
+// fli.remove();
