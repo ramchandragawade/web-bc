@@ -50,31 +50,43 @@
 // //instead use
 // sq.nextElementSibling;
 // sq.previousElementSibling;
-d=document.createElement('img')
-d.src='https://cdn.crash.net/styles/article/s3/pa/3161159.0064.jpg?itok=b3SVHR4Q'
-body = document.querySelector('body');
-body.appendChild(d);
+// d=document.createElement('img')
+// d.src='https://cdn.crash.net/styles/article/s3/pa/3161159.0064.jpg?itok=b3SVHR4Q'
+// body = document.querySelector('body');
+// body.appendChild(d);
 
-h3 = document.createElement('h3');
-h3.innerText = 'I am new!';
-//singular child append
-body.appendChild(h3);
+// h3 = document.createElement('h3');
+// h3.innerText = 'I am new!';
+// //singular child append
+// body.appendChild(h3);
 
-//multiple can be appended
-p = document.querySelector('p');
-p.append('asbdkashdjkashjdkashdaskdhask')
+// //multiple can be appended
+// p = document.querySelector('p');
+// p.append('asbdkashdjkashjdkashdaskdhask')
 
-newB = document.createElement('b');
-newB.append('asdasd');
-p.prepend(newB);
+// newB = document.createElement('b');
+// newB.append('asdasd');
+// p.prepend(newB);
 
 
-h2 = document.createElement('h2')
+// h2 = document.createElement('h2')
 
-h2.append('Chickekekkekekekekek')
-h1 = document.querySelector('h1')
-h1.insertAdjacentElement('afterend', h2);
+// h2.append('Chickekekkekekekekek')
+// h1 = document.querySelector('h1')
+// h1.insertAdjacentElement('afterend', h2);
 
-h3 = document.createElement('h3')
-h3.append('vvvvvvv')
-h2.after(h3)
+// h3 = document.createElement('h3')
+// h3.append('vvvvvvv')
+// h2.after(h3)
+
+//REMOVE
+
+//older way to remove
+//go to parent and then remove the child
+
+fli = document.querySelector('li')
+ul = fli.parentElement
+ul.removeChild(fli)
+
+//new way, directly remove
+fli.remove();
