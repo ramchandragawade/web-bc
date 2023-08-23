@@ -11,6 +11,7 @@ form.addEventListener('submit', function(e){
     addtweet(username.value, tweet.value);
     username.value='';
     tweet.value='';
+    // form.reset();
 });
 
 function addtweet (username, tweet) {
