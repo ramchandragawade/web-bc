@@ -86,7 +86,7 @@ const fakeRequestPromise = (url) => {
     return new Promise((resolve, reject) => {
         const delay = Math.floor(Math.random() * (4500)) + 500;
         setTimeout(() => {
-            if (delay > 3000) {
+            if (delay > 4000) {
                 reject('Connection Timeout :(')
             } else {
                 resolve(`Here is your fake data from ${url}`)
@@ -97,10 +97,9 @@ const fakeRequestPromise = (url) => {
 
 async function makeTwoReq(){
     try {
-
         let data1 = await fakeRequestPromise('/page1');
-        let data2 = await fakeRequestPromise('/page2');
         console.log(data1);
+        let data2 = await fakeRequestPromise('/page2');
         console.log(data2);
     } catch (error) {
         console.log('ERRORRRR:',error);
