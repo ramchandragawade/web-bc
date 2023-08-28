@@ -38,3 +38,14 @@ delayedColorChange('red',1000, function(){
         });
     });
 });
+
+// Example of CB Hell
+// searchMoviesApi('amadeus', function(){
+//     saveToMyDB(movies, function(){
+//         //success func
+//     }, function(){
+//         //failure func
+//     });
+// }, function (){
+//     //unable to connect
+// });
