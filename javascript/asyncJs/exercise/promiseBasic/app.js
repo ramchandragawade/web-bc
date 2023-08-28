@@ -49,24 +49,41 @@ const fakeRequestPromise = (url) => {
 
 //fakeReq with promise
 
-fakeRequestPromise('books').then(function(data){
-    console.log('It worked P1');
+// fakeRequestPromise('books').then(function(data){
+//     console.log('It worked P1');
+//     console.log(data);
+//     fakeRequestPromise('books/p2').then(function (data) {
+//         console.log('It worked P2');
+//         console.log(data);
+//         fakeRequestPromise('books/p3').then(function (data) {
+//             console.log('It worked P3');
+//             console.log(data);
+//         }).catch(function (e) {
+//             console.log('P3 Failed');
+//             console.log(e);
+//         })
+//     }).catch(function (e) {
+//         console.log('P2 Failed');
+//         console.log(e);
+//     })
+// }).catch(function(e){
+//     console.log('P1 Failed');
+//     console.log(e);
+// });
+
+fakeRequestPromise('books').then(data=>{
+    console.log('It worked P1.')
     console.log(data);
-    fakeRequestPromise('books/p2').then(function (data) {
-        console.log('It worked P2');
-        console.log(data);
-        fakeRequestPromise('books/p3').then(function (data) {
-            console.log('It worked P3');
-            console.log(data);
-        }).catch(function (e) {
-            console.log('P3 Failed');
-            console.log(e);
-        })
-    }).catch(function (e) {
-        console.log('P2 Failed');
-        console.log(e);
-    })
-}).catch(function(e){
-    console.log('P1 Failed');
+    return fakeRequestPromise('books/p2');
+}).then(data=>{
+    console.log('It worked P2.')
+    console.log(data);
+    return fakeRequestPromise('books/p3');
+}).then(data => {
+    console.log('It worked P3.')
+    console.log(data);
+//    return fakeRequestPromise('books/p3');
+}).catch(e=>{
+    console.log('Error')
     console.log(e);
 });
