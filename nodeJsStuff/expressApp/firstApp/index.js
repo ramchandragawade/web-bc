@@ -11,7 +11,7 @@ const app = express();
 // })
 
 app.get('/',(req,res)=>{
-    res.send('Home Page');
+    res.send('Welcome Home Page');
 })
 
 app.get('/cats',(req,res)=>{
