@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random number</title>
-</head>
-<body>
+<%- include('partials/head') %>
+<%- include('partials/navbarTemp') %>
     <h1>Random number: <%= num + ', num+1 is ' + rand %> </h1>
     <% if(num%2===0){ %>
         <h2>This is an even number!!</h2>
@@ -14,5 +8,4 @@
         <% } %>
 
     <h3>(Inline) This is an <%= num%2===0 ? 'Even' : 'Odd'  %> number!!! </h3>
-</body>
-</html>
+<%- include('partials/footer') %>
