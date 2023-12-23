@@ -1,0 +1,12 @@
+<%- include('partials/head') %>
+<%- include('partials/navbarTemp') %>
+    <h1>All the cats</h1>
+    <p><%= cats %></p>
+
+    <h2>Using List</h2>
+    <ul>
+        <%  for(let cat of cats){ %>
+            <li> <%= cat %> </li>
+        <%  } %>
+    </ul>
+<%- include('partials/footer') %>

@@ -1,0 +1,27 @@
+<%- include('partials/head') %>
+<%- include('partials/navbarTemp') %>
+    <div class="container">
+        <h1>Sub name is <%= name %>
+        </h1>
+        <h3>
+            <%= description %>
+        </h3>
+        <p> Subs: <%= subscribers %>
+        </p>
+        <hr style="border-bottom: 3px solid #333;">
+        <% for(let post of posts) { %>
+            <article>
+                <h3>
+                    <%= post.title %>
+                </h3>
+                <p> by <b>
+                        <%= post.author %>
+                    </b> </p>
+                <% if(post.img) { %>
+                    <img src="<%= post.img %>" alt="">
+                    <% } %>
+                        <hr>
+            </article>
+            <% } %>
+    </div>
+<%- include('partials/footer') %>

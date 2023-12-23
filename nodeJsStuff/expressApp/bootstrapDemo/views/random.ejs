@@ -1,0 +1,11 @@
+<%- include('partials/head') %>
+<%- include('partials/navbarTemp') %>
+    <h1>Random number: <%= num + ', num+1 is ' + rand %> </h1>
+    <% if(num%2===0){ %>
+        <h2>This is an even number!!</h2>
+    <% } else {%>
+        <h2>This is an odd number!!</h2>
+        <% } %>
+
+    <h3>(Inline) This is an <%= num%2===0 ? 'Even' : 'Odd'  %> number!!! </h3>
+<%- include('partials/footer') %>
