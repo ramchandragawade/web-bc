@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Comments</title>
+</head>
+
+<body>
+    <h1>All comments:</h1>
+    <ul>
+        <% for(itm of comments) { %>
+            <li>
+                <%= itm.comment %> - <b><%= itm.uname %></b>
+                <a href="/comments/<%= itm.id %>"><i>show</i></a>
+            </li>
+            <% } %>
+    </ul>
+    <br><br>
+    <a href="/comments/new">Add new comment</a>
+</body>
+
+</html>
