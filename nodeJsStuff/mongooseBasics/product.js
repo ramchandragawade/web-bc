@@ -40,6 +40,26 @@ const productSchema = new mongoose.Schema({
     }
 });
 
+// productSchema.methods.greet = function(){
+//     console.log('Hiiiiiiiiii: from - ' + this.name);
+// }
+
+productSchema.methods.toggleOnSale = function(){
+    this.onSale = !this.onSale;
+    return this.save();
+}
+
+productSchema.methods.addCategories = function(newCat){
+    this.categories.push(newCat);
+    return this.save();
+}
+
+productSchema.statics.fireSale = async function(){
+    const data = await this.updateMany({},{onSale: true, price:1});
+    console.log(data);
+    return this.find();
+}
+
 const Product = mongoose.model('Product',productSchema);
 const bike = new Product({
     name: 'Cycle jersey',
@@ -47,6 +67,21 @@ const bike = new Product({
     categories:['Bike','Two Wheels', 22],
     size: 'L'
 });
+
+// bike.save();
+const findProduct = async function (){
+    const gotProd = await Product.findOne({name: 'Cycle jersey'});
+    console.log(gotProd);
+    await gotProd.toggleOnSale();
+    console.log(gotProd);
+    await gotProd.addCategories('Outdoors');
+    console.log(gotProd);
+    // gotProd.greet();
+}
+// findProduct();
+
+// Product.fireSale().then(res=>console.log(res));
+
 // bike.save().then(data=>console.log('It worked!!\n'+data)).catch(err=>console.log('Error:\n'+err));
 
-Product.findOneAndUpdate({ name: "Bike" }, { price: -999 }, {new:true, runValidators: true}).then((data) => console.log(data)).catch((data) => console.log("err:/n" + data));
+// Product.findOneAndUpdate({ name: "Bike" }, { price: -999 }, {new:true, runValidators: true}).then((data) => console.log(data)).catch((data) => console.log("err:/n" + data));
