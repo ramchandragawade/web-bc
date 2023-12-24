@@ -18,7 +18,16 @@
     <a href="/products/<%= prod._id %>/edit">Edit Product</a>
         <br>
     <form action="/products/<%= prod._id %>?_method=DELETE" method="POST">
-        <button>Delete Product</button>
+        <button
+        style="
+            background: none!important;
+            border: none;
+            font-size: 0.9em;
+            color: red;
+            padding: 0!important;
+            text-decoration: underline;
+            cursor: pointer;
+          ">Delete Product</button>
     </form>
     <br><br>
     <a href="/products">Go to all products</a>
