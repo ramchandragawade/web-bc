@@ -21,9 +21,15 @@ mongoose.connect('mongodb://127.0.0.1:27017/farmMarket')
     console.log('MONGO Failure!!!!'+err);
 });
 
-app.get('/products',async (req,res)=>{
+app.get("/products", async (req, res) => {
+  let { category } = req.query;
+  if (category) {
+    const allProd = await Product.find({ category });
+    res.render("products/index", { allProd, category });
+  } else {
     const allProd = await Product.find({});
-    res.render('products/index', {allProd});
+    res.render("products/index", { allProd, category });
+  }
 });
 
 app.get('/products/new',(req,res)=>{

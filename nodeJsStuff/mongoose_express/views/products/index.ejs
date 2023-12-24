@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Products</title>
+    <title><%=category? category+' products':'All Products' %></title>
 </head>
 <body>
-    <h1>All Products</h1>
+    <h1><%=category? category+' products':'All Products' %></h1>
     <ul>
         <% for(prod of allProd){ %>
             <li> <a href="/products/<%= prod._id %>"><%= prod.name %></a></li>
         <% } %>
     </ul>
     <a href="/products/new">Add new product</a>
+    <% if(category){%>
+        <br>
+        <a href="/products">Go to all products</a>
+        <% } %>
 </body>
 </html>

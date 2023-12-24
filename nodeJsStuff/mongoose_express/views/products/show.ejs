@@ -12,8 +12,7 @@
         <ul>
             <li>Price: $<%= prod.price %>
             </li>
-            <li>Category: <%= prod.category %>
-            </li>
+            <li>Category: <a href="/products?category=<%= prod.category%>"><%= prod.category%></a></li>
         </ul>
     </h3>
     <a href="/products/<%= prod._id %>/edit">Edit Product</a>
