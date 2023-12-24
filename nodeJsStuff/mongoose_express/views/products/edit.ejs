@@ -16,12 +16,13 @@
         <br>
         <label for="category">Select category:</label>
         <select name="category" id="category">
-            <option value="fruit" <%= prod.category === 'fruit' && 'selected' %>>Fruit</option>
-            <option value="veggie" <%= prod.category === 'veggie' && 'selected' %>>Vegetable</option>
-            <option value="dairy" <%= prod.category ==='dairy' && 'selected' %>>Dairy</option>
+            <% for(let cat of categories) { %>
+                <option value="<%=cat %>" <%= prod.category === cat ? 'selected' :'' %>><%=cat %></option>
+            <% } %>
         </select>
         <br>
         <button>Submit</button>
     </form>
+    <a href="/products">Go to all products</a>
 </body>
 </html>

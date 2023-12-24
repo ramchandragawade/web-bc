@@ -12,6 +12,8 @@ const mongoose = require('mongoose');
 const Product = require('./models/product');
 const { log } = require('console');
 
+const categories = ['fruit', 'veggie', 'dairy'];
+
 mongoose.connect('mongodb://127.0.0.1:27017/farmMarket')
 .then(()=>{
     console.log('MONGO Connected!!!!');
@@ -25,7 +27,7 @@ app.get('/products',async (req,res)=>{
 });
 
 app.get('/products/new',(req,res)=>{
-    res.render('products/new');
+    res.render('products/new', {categories});
 });
 
 app.post('/products',async (req,res)=>{
@@ -46,7 +48,7 @@ app.get('/products/:id',async (req,res)=>{
 app.get('/products/:id/edit',async (req,res)=>{
     const { id } = req.params;
     const prod = await Product.findById(id);
-    res.render('products/edit',{prod});
+    res.render('products/edit',{prod,categories});
 });
 
 app.put('/products/:id',async (req,res)=>{
