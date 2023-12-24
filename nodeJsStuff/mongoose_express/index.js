@@ -19,6 +19,14 @@ app.get('/products',async (req,res)=>{
     res.render('products/index', {allProd});
 });
 
+app.get('/products/:id',async (req,res)=>{
+    const { id } = req.params;
+    const prod = await Product.findById(id);
+    // console.log(prod);
+    // res.send('Details page');
+    res.render('products/show',{prod});
+});
+
 app.listen(3000,()=>{
     console.log('Connected to 3000!!!');
 });
