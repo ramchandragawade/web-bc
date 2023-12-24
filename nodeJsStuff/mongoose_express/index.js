@@ -54,8 +54,15 @@ app.get('/products/:id/edit',async (req,res)=>{
 app.put('/products/:id',async (req,res)=>{
     const { id } = req.params;
     const editedProd = await Product.findByIdAndUpdate(id,req.body,{runValidators: true, new: true});
-    console.log(editedProd);
+    // console.log(editedProd);
     res.redirect(`/products/${editedProd._id}`);
+});
+
+app.delete('/products/:id',async (req,res)=>{
+    const { id } = req.params;
+    const prod = await Product.findByIdAndDelete(id);
+    console.log(prod);
+    res.redirect('/products');
 });
 
 app.listen(3000,()=>{
