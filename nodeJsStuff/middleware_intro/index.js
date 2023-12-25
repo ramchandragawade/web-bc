@@ -9,6 +9,11 @@ app.use((req,res,next)=>{
     next();
 });
 
+app.use('/dogs',(req,res,next)=>{
+    console.log('catsssss');
+    next();
+});
+
 // app.use((req,res,next)=>{
 //     console.log('In 1 use...');
 //     next();
@@ -29,6 +34,10 @@ app.get('/',(req,res)=>{
 app.get('/dogs',(req,res)=>{
     res.send('Dogsgsgsgsg');
 })
+
+app.use((req,res)=>{
+    res.status(404).send('NOT FOUND');
+});
 
 app.listen(3000,()=>{
     console.log('App is running on 3000');
