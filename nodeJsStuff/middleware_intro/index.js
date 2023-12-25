@@ -14,6 +14,16 @@ app.use('/dogs',(req,res,next)=>{
     next();
 });
 
+app.use((req,res,next)=>{
+    const {pass} = req.query;
+    if(pass === 'raaj123'){
+        next();
+    } else {
+        res.send('Cannot access this');
+    }
+});
+
+
 // app.use((req,res,next)=>{
 //     console.log('In 1 use...');
 //     next();
@@ -32,7 +42,7 @@ app.get('/',(req,res)=>{
 });
 
 app.get('/dogs',(req,res)=>{
-    res.send('Dogsgsgsgsg');
+    res.send('DOGOGOGOGOGOG');
 })
 
 app.use((req,res)=>{
