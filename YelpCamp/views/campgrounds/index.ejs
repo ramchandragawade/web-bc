@@ -6,11 +6,12 @@
     <title>Campgrounds</title>
 </head>
 <body>
+    <h2><a href="/campgrounds/new">Add new campground</a></h2>
     <h1>Campgrounds</h1>
     <ul>
         <% for(let camp of campgrounds) { %>
-            <li><%= camp.title %></li>
+            <li><a href="/campgrounds/<%= camp._id %>"><%= camp.title %></a></li>
         <% } %>
-    </ul>    
+    </ul>
 </body>
 </html>
