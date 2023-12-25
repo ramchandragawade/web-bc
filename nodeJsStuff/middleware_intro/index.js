@@ -14,14 +14,26 @@ app.use('/dogs',(req,res,next)=>{
     next();
 });
 
-app.use((req,res,next)=>{
-    const {pass} = req.query;
-    if(pass === 'raaj123'){
+const verifyPass = (req, res, next) => {
+    const { pass } = req.query;
+    if (pass === 'raaj123') {
         next();
     } else {
         res.send('Cannot access this');
     }
+}
+app.get('/secret',verifyPass,(req,res)=>{
+    res.send('Got a secret, can you keep it!!!!');
 });
+
+// app.use((req,res,next)=>{
+//     const {pass} = req.query;
+//     if(pass === 'raaj123'){
+//         next();
+//     } else {
+//         res.send('Cannot access this');
+//     }
+// });
 
 
 // app.use((req,res,next)=>{
