@@ -1,32 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Campground Show</title>
-</head>
-<body>
-    <h1>Campground Name - <%= camp.title %></h1>
+<% layout('layouts/boilerplate') %>
+
+<div class="row">
+    <div class="col-6 offset-3">
+        <div class="card mb-3">
+            <img src="<%= camp.image %>" class="card-img-top" alt="">
+            <div class="card-body">
+                <h4 class="card-title"><%= camp.title %></h4>
+                <h6 class="card-text"></h6>
+                <p class="card-text"><%= camp.description %></p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><%= camp.location %></li>
+                <li class="list-group-item">$<%= camp.price %>/per night</li>
+            </ul>
+            <div class="card-body d-flex justify-content-between">
+                <a href="/campgrounds/<%= camp._id%>/edit" class="card-link btn btn-info">Edit Campground</a>
+                <form class="d-inline" action="/campgrounds/<%= camp._id %>?_method=DELETE" method="POST">
+                    <button class="btn btn-danger">Delete Campground</button>
+                </form>    
+            </div>
+            <div class="card-footer text-body-secondary">
+                <a href="/campgrounds" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Go back to All campgrounds</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <h1>Campground Name - <%= camp.title %></h1>
+<br>
+<h2>Location - <%= camp.location %></h2>
+<img src="<%= camp.image %>" alt="" srcset="">
+<p><%= camp.description %></p>
+<br><br>
+<section>
+    <a href="/campgrounds/<%= camp._id%>/edit">Edit Campground</a>
     <br>
-    <h2>Location - <%= camp.location %></h2>
-    <br><br>
-    <footer>
-        <a href="/campgrounds/<%= camp._id%>/edit">Edit Campground</a>
-        <br>
-        <form action="/campgrounds/<%= camp._id %>?_method=DELETE" method="POST">
-            <button
-            style="
-                background: none!important;
-                border: none;
-                font-size: 0.9em;
-                color: red;
-                padding: 0!important;
-                text-decoration: underline;
-                cursor: pointer;
-              ">Delete Campground</button>
-        </form>
-        <br>
-        <a href="/campgrounds">All campgrounds</a>
-    </footer>
-</body>
-</html>
+    <form action="/campgrounds/<%= camp._id %>?_method=DELETE" method="POST">
+        <button
+        style="
+            background: none!important;
+            border: none;
+            font-size: 0.9em;
+            color: red;
+            padding: 0!important;
+            text-decoration: underline;
+            cursor: pointer;
+            ">Delete Campground</button>
+    </form>
+    <br>
+    <a href="/campgrounds">All campgrounds</a>
+</section> -->
