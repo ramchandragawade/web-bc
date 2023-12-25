@@ -2,8 +2,10 @@
 <h1>Campground Name - <%= camp.title %></h1>
 <br>
 <h2>Location - <%= camp.location %></h2>
+<img src="<%= camp.image %>" alt="" srcset="">
+<p><%= camp.description %></p>
 <br><br>
-<footer>
+<section>
     <a href="/campgrounds/<%= camp._id%>/edit">Edit Campground</a>
     <br>
     <form action="/campgrounds/<%= camp._id %>?_method=DELETE" method="POST">
@@ -20,4 +22,4 @@
     </form>
     <br>
     <a href="/campgrounds">All campgrounds</a>
-</footer>
+</section>
