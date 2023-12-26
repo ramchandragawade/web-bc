@@ -43,8 +43,6 @@ app.get('/campgrounds/new', (req,res)=>{
 
 // Add New campground form submission route(POST)
 app.post('/campgrounds', catchAsync(async(req,res,next)=>{
-    // if(!req.body.campground) throw new ExpressError('INVALID CAMPGROUND DATA', 400);
-    
     const campgroundSchemaJOI = Joi.object({
         campground: Joi.object({
             title: Joi.string().required(),
