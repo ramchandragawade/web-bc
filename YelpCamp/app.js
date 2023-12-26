@@ -2,6 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const ejsMate = require('ejs-mate');
+
+const catchAsync = require('./utils/catchAsync');
+
 const Campground = require('./models/campground');
 
 mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp');
@@ -37,42 +40,38 @@ app.get('/campgrounds/new', (req,res)=>{
 });
 
 // Add New campground form submission route(POST)
-app.post('/campgrounds', async(req,res,next)=>{
-    try {
-        const newCamp = new Campground(req.body.campground);
-        await newCamp.save();
-        res.redirect('/campgrounds');    
-    } catch(e){
-        next(e);
-    }
-});
+app.post('/campgrounds', catchAsync(async(req,res,next)=>{
+    const newCamp = new Campground(req.body.campground);
+    await newCamp.save();
+    res.redirect('/campgrounds');
+}));
 
 // Show selected campground route
-app.get('/campgrounds/:id', async(req,res)=>{
+app.get('/campgrounds/:id', catchAsync(async(req,res)=>{
     const {id} = req.params;
     const camp = await Campground.findById(id);
     res.render('campgrounds/show', {camp});
-});
+}));
 
 // Update edited campground route
-app.put('/campgrounds/:id', async(req,res)=>{
+app.put('/campgrounds/:id',catchAsync(async(req,res)=>{
     const {id} = req.params;
     const camp = await Campground.findByIdAndUpdate(id,{...req.body.campground});
     res.redirect(`/campgrounds/${camp._id}`);
-});
+}));
 
 // delete campground route
-app.delete('/campgrounds/:id', async(req,res)=>{
+app.delete('/campgrounds/:id',catchAsync(async(req,res)=>{
     const {id} = req.params;
     await Campground.findByIdAndDelete(id);
     res.redirect(`/campgrounds`);
-});
+}));
 
 // Edit campground form route
-app.get('/campgrounds/:id/edit', async(req,res)=>{
+app.get('/campgrounds/:id/edit',catchAsync(async(req,res)=>{
     const camp = await Campground.findById(req.params.id);
     res.render('campgrounds/edit', {camp});
-});
+}));
 
 // Error handler
 app.use((err, req, res, next)=>{
