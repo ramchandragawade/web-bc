@@ -42,6 +42,8 @@ app.get('/campgrounds/new', (req,res)=>{
 
 // Add New campground form submission route(POST)
 app.post('/campgrounds', catchAsync(async(req,res,next)=>{
+    if(!req.body.campground)
+        throw new ExpressError('INVALID CAMPGROUND DATA', 400);
     const newCamp = new Campground(req.body.campground);
     await newCamp.save();
     res.redirect('/campgrounds');
