@@ -52,4 +52,5 @@ const addProduct = async()=>{
     await farm.save();
     console.log(farm);
 }
-addProduct()
+// addProduct();
+Farm.findOne({name: 'New London Farm'}).populate('products').then(data=>console.log(data));
