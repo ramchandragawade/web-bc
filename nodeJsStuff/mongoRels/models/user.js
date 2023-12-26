@@ -33,4 +33,21 @@ const makeUser= async()=>{
     const res = await n.save();
     console.log(res);
 }
-makeUser();
+
+const addAddress = async(id) =>{
+    const user = await User.findById(id);
+    if(user){
+        user.address.push({
+            street: '6 Street',
+            city: 'London',
+            state: 'Londo',
+            country: 'UK'
+        });
+    } else {
+        console.log('User not found');
+    }
+    const res = await user.save();
+    console.log(res);
+}
+// makeUser();
+addAddress('658b543bde23ff19c47baafb');
