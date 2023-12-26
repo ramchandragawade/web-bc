@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
+const AppError = require('./AppError');
+const e = require('express');
 
 app.use(morgan('dev'));
 app.use((req,res,next)=>{
@@ -19,7 +21,8 @@ const verifyPass = (req, res, next) => {
         next();
     } else {
         // res.send('Cannot access this');
-        throw new Error('Password req');
+        // res.status(401);
+        throw new AppError('Password req',401);
     }
 }
 app.get('/secret',verifyPass,(req,res)=>{
@@ -62,15 +65,30 @@ app.get('/error',(req,res)=>{
     res.send('Errrrrr');
 })
 
+app.get('/admin',(req,res)=>{
+    throw new AppError('Forbidden Access',403);
+})
+
 app.use((req,res)=>{
     res.status(404).send('NOT FOUND');
 });
+
+// app.use((err,req,res,next)=>{
+//     console.log('**********************************************************');
+//     console.log('**********************ERROR*******************************');
+//     console.log('**********************************************************');
+//     // res.status(500).send('We got an error!!!!');
+//     next(err);
+//     // next();
+// });
 
 app.use((err,req,res,next)=>{
     console.log('**********************************************************');
     console.log('**********************ERROR*******************************');
     console.log('**********************************************************');
-    res.status(500).send('We got an error!!!!');
+    // res.status(500).send('We got an error!!!!');
+    const {status = 500, message = 'Errrrrrroooorr'} = err;
+    res.status(status).send(message);
     // next(err);
     // next();
 });
