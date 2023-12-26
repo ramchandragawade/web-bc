@@ -58,16 +58,16 @@ app.get('/',(req,res)=>{
 
 app.get('/dogs',(req,res)=>{
     res.send('DOGOGOGOGOGOG');
-})
+});
 
 app.get('/error',(req,res)=>{
     chicken.fly();
     res.send('Errrrrr');
-})
+});
 
 app.get('/admin',(req,res)=>{
     throw new AppError('Forbidden Access',403);
-})
+});
 
 app.use((req,res)=>{
     res.status(404).send('NOT FOUND');
