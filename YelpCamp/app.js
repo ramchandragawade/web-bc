@@ -20,19 +20,23 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
 
+// Home route
 app.get('/', (req, res) => {
     res.render('home');
 });
 
+// Campgroung index route
 app.get('/campgrounds', async(req,res)=>{
     const campgrounds = await Campground.find({});
     res.render('campgrounds/index', {campgrounds});
 });
 
+// New campground form route
 app.get('/campgrounds/new', (req,res)=>{
     res.render('campgrounds/new');
 });
 
+// Add New campground form submission route(POST)
 app.post('/campgrounds', async(req,res,next)=>{
     try {
         const newCamp = new Campground(req.body.campground);
@@ -43,29 +47,34 @@ app.post('/campgrounds', async(req,res,next)=>{
     }
 });
 
+// Show selected campground route
 app.get('/campgrounds/:id', async(req,res)=>{
     const {id} = req.params;
     const camp = await Campground.findById(id);
     res.render('campgrounds/show', {camp});
 });
 
+// Update edited campground route
 app.put('/campgrounds/:id', async(req,res)=>{
     const {id} = req.params;
     const camp = await Campground.findByIdAndUpdate(id,{...req.body.campground});
     res.redirect(`/campgrounds/${camp._id}`);
 });
 
+// delete campground route
 app.delete('/campgrounds/:id', async(req,res)=>{
     const {id} = req.params;
     await Campground.findByIdAndDelete(id);
     res.redirect(`/campgrounds`);
 });
 
+// Edit campground form route
 app.get('/campgrounds/:id/edit', async(req,res)=>{
     const camp = await Campground.findById(req.params.id);
     res.render('campgrounds/edit', {camp});
 });
 
+// Error handler
 app.use((err, req, res, next)=>{
     res.send('Something went wrong.\n'+err);
 });
