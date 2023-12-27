@@ -91,11 +91,11 @@ app.get('/campgrounds/:id/edit',catchAsync(async(req,res)=>{
 app.post('/campgrounds/:id/reviews',catchAsync(async(req,res)=>{
     const { id } = req.params;
     const camp = await Campground.findById(id);
-    const review = new Review(req.body);
-    await review.save();
+    const review = new Review(req.body.review);
     camp.reviews.push(review);
+    await review.save();
     await camp.save();
-    res.send(camp);
+    res.redirect('/campgrounds/'+id);
 }));
 
 // Error handler
