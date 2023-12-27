@@ -62,9 +62,7 @@ app.post('/farms/:id/products',async(req,res)=> {
 
 app.delete('/farms/:id',async (req,res)=>{
     const { id } = req.params;
-    // const farm = await Farm.findByIdAndDelete(id);
-    // console.log(prod);
-    console.log('deletinnnggg');
+    const farm = await Farm.findByIdAndDelete(id);
     res.redirect('/farms');
 });
   
