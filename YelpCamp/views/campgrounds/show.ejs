@@ -1,7 +1,7 @@
 <% layout('layouts/boilerplate') %>
 
 <div class="row">
-    <div class="col-6 offset-3">
+    <div class="col-6">
         <div class="card mb-3">
             <img src="<%= camp.image %>" class="card-img-top" alt="">
             <div class="card-body">
@@ -24,29 +24,41 @@
             </div>
         </div>
     </div>
+    <div class="col-6">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Leave a Review</h5>
+                <form action="/campgrounds/<%=camp._id%>/reviews" class="validate-form  mb-3" method="POST" novalidate>
+                    <div class="mb-3">
+                        <label for="rating" class="form-label">Rating</label>
+                        <input type="range" min="1" max="5" required class="form-range" name="review[rating]" id="rating">
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div> 
+                    </div>
+                    <div class="mb-3">
+                        <label for="body" class="form-label">Review</label>
+                        <textarea name="review[body]" id="body" required cols="30" rows="5" class="form-control"></textarea>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>                     
+                    </div>
+                    <button class="btn btn-success">Submit</button>
+                </form>    
+            </div>
+        </div>
+        <div class="mb-3">
+            <% for(let review of camp.reviews){ %>
+                <div class="card mb-2">
+                    <div class="card-body">
+                        <h5 class="card-title">Rating: <%= review.rating %></h5>
+                        <p class="card-text">Review: <%= review.body %></p>
+                        <form action="/campgrounds/<%=camp._id%>/reviews/<%=review._id%>?_method=DELETE" method="post">
+                            <button class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
 </div>
-
-<!-- <h1>Campground Name - <%= camp.title %></h1>
-<br>
-<h2>Location - <%= camp.location %></h2>
-<img src="<%= camp.image %>" alt="" srcset="">
-<p><%= camp.description %></p>
-<br><br>
-<section>
-    <a href="/campgrounds/<%= camp._id%>/edit">Edit Campground</a>
-    <br>
-    <form action="/campgrounds/<%= camp._id %>?_method=DELETE" method="POST">
-        <button
-        style="
-            background: none!important;
-            border: none;
-            font-size: 0.9em;
-            color: red;
-            padding: 0!important;
-            text-decoration: underline;
-            cursor: pointer;
-            ">Delete Campground</button>
-    </form>
-    <br>
-    <a href="/campgrounds">All campgrounds</a>
-</section> -->
