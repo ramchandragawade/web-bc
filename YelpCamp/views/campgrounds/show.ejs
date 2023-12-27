@@ -42,12 +42,12 @@
         </form>
         <div class="mb-3">
             <% for(let review of camp.reviews){ %>
-                <ul class="footer text-body-secondary">
-                    <li>
-                        Rating: <%= review.rating %><br>
-                        Review: <%= review.body %>
-                    </li>
-                </ul>
+                <div class="card mb-2">
+                    <div class="card-body">
+                        <h5 class="card-title">Rating: <%= review.rating %></h5>
+                        <p class="card-text">Review: <%= review.body %></p>
+                    </div>
+                </div>
             <% } %>
         </div>
     </div>
