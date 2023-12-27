@@ -23,7 +23,7 @@
                 <a href="/campgrounds" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Go back to All campgrounds</a>
             </div>
         </div>
-        <form action="" class="mb-3">
+        <form action="/campgrounds/<%=camp._id%>/reviews" class="mb-3" method="POST">
             <div class="mb-3">
                 <label for="rating" class="form-label">Rating</label>
                 <input type="range" min="1" max="5" class="form-range" name="rating" id="rating">

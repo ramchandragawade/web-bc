@@ -8,6 +8,7 @@ const ExpressError = require('./utils/ExpressError');
 const catchAsync = require('./utils/catchAsync');
 
 const Campground = require('./models/campground');
+const Review = require('./models/review');
 
 mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp');
 const db = mongoose.connection;
@@ -84,6 +85,17 @@ app.delete('/campgrounds/:id',catchAsync(async(req,res)=>{
 app.get('/campgrounds/:id/edit',catchAsync(async(req,res)=>{
     const camp = await Campground.findById(req.params.id);
     res.render('campgrounds/edit', {camp});
+}));
+
+// Add campground review form route(POST)
+app.post('/campgrounds/:id/reviews',catchAsync(async(req,res)=>{
+    const { id } = req.params;
+    const camp = await Campground.findById(id);
+    const review = new Review(req.body);
+    await review.save();
+    camp.reviews.push(review);
+    await camp.save();
+    res.send(camp);
 }));
 
 // Error handler
