@@ -43,9 +43,10 @@ app.get('/farms/:id',async (req,res)=>{
     res.render('farms/show',{farm});
 });
 
-app.get('/farms/:id/products/new',(req,res)=>{
+app.get('/farms/:id/products/new',async(req,res)=>{
     const {id} = req.params;
-    res.render('products/new', {categories,id});
+    const farm = await Farm.findById(id);
+    res.render('products/new', {categories,farm});
 });
 
 app.post('/farms/:id/products',async(req,res)=> {
@@ -57,6 +58,14 @@ app.post('/farms/:id/products',async(req,res)=> {
     await farm.save();
     await newProd.save();
     res.redirect('/farms/'+id);
+});
+
+app.delete('/farms/:id',async (req,res)=>{
+    const { id } = req.params;
+    // const farm = await Farm.findByIdAndDelete(id);
+    // console.log(prod);
+    console.log('deletinnnggg');
+    res.redirect('/farms');
 });
   
 //Product routes
@@ -84,7 +93,7 @@ app.post('/products',async (req,res)=>{
 
 app.get('/products/:id',async (req,res)=>{
     const { id } = req.params;
-    const prod = await Product.findById(id);
+    const prod = await Product.findById(id).populate('farm');
     // console.log(prod);
     // res.send('Details page');
     res.render('products/show',{prod});
