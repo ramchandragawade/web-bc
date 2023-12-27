@@ -10,6 +10,7 @@ app.use(methodOverride('_method'))
 
 const mongoose = require('mongoose');
 const Product = require('./models/product');
+const Farm = require('./models/farm');
 const { log } = require('console');
 
 const categories = ['fruit', 'veggie', 'dairy'];
@@ -22,19 +23,40 @@ mongoose.connect('mongodb://127.0.0.1:27017/farmMarket3')
 });
 
 //Farm routes
-app.get("/farm", async (req, res) => {
-    let { category } = req.query;
-    if (category) {
-        const allProd = await Product.find({ category });
-        res.render("products/index", { allProd, category });
-    } else {
-        const allProd = await Product.find({});
-        res.render("products/index", { allProd, category: 'All' });
-    }
+app.get("/farms", async (req, res) => {
+    const allFarms = await Farm.find({});
+    res.render("farms/index", { allFarms });
 });
 
-app.get('/products/new', (req, res) => {
-    res.render('products/new', { categories });
+app.get('/farms/new', (req, res) => {
+    res.render('farms/new');
+});
+
+app.post('/farms',async(req,res)=>{
+    const newFarm = new Farm(req.body);
+    await newFarm.save();
+    res.redirect('/farms');
+});
+app.get('/farms/:id',async (req,res)=>{
+    const { id } = req.params;
+    const farm = await Farm.findById(id);
+    res.render('farms/show',{farm});
+});
+
+app.get('/farms/:id/products/new',(req,res)=>{
+    const {id} = req.params;
+    res.render('products/new', {categories,id});
+});
+
+app.post('/farms/:id/products',async(req,res)=> {
+    const newProd = new Product(req.body);
+    const {id} = req.params;
+    const farm = await Farm.findById(id);
+    farm.products.push(newProd);
+    newProd.farm = farm;
+    await farm.save();
+    await newProd.save();
+    res.send(farm);
 });
   
 //Product routes
