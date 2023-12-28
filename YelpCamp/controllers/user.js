@@ -1,10 +1,12 @@
 const User = require('../models/user');
 
 module.exports = {
+
     // show register form
     showRegisterForm: (req,res)=>{
         res.render('users/register');
     },
+
     // register the user
     registerUser: async(req,res,next)=>{
         try {
@@ -21,10 +23,12 @@ module.exports = {
             res.redirect('/register');
         }
     },
+
     //show login form
     showLoginForm: (req,res)=>{
         res.render('users/login');
     },
+
     // submit login req & auth
     postLogin: async(req,res)=>{
         req.flash('success',`Welcome back ${req.body.username}!!!`);
@@ -33,6 +37,7 @@ module.exports = {
         delete req.session.returnTo;
         res.redirect(redirectUrl);
     },
+
     //logout the user
     logoutUser: (req,res)=>{
         req.logout(function (err) {
