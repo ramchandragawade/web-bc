@@ -32,6 +32,7 @@ router.get('/new', isLoggedIn, (req,res)=>{
 // Add New campground form submission route(POST)
 router.post('/', isLoggedIn, validateCampground, catchAsync(async(req,res,next)=>{
     const newCamp = new Campground(req.body.campground);
+    newCamp.author = req.user._id;
     await newCamp.save();
     req.flash('success','Successfully added a new campground!');
     res.redirect('/campgrounds/'+newCamp._id);
@@ -40,7 +41,7 @@ router.post('/', isLoggedIn, validateCampground, catchAsync(async(req,res,next)=
 // Show selected campground route
 router.get('/:id', catchAsync(async(req,res)=>{
     const {id} = req.params;
-    const camp = await Campground.findById(id).populate('reviews');
+    const camp = await Campground.findById(id).populate('reviews').populate('author');
     if(!camp){
         req.flash('error','Campground not found!');
         return res.redirect('/campgrounds');
