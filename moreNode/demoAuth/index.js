@@ -62,11 +62,17 @@ app.post('/register', async(req,res)=>{
     res.redirect('/');
 });
 
+app.post('/logout', async(req,res)=>{
+    // req.session.user_id = null;
+    req.session.destroy();
+    res.redirect('/');
+});
+
 app.get('/secret',(req,res)=>{
     if(!req.session.user_id){
         return res.redirect('/login');
     }
-    res.send('GOT A SECRET CAN YOU KEEP IT!!!!');
+    res.render('secret');
 });
 
 app.listen(3030,()=>{
