@@ -4,18 +4,26 @@ const path = require('path');
 app.set('views', path.join(__dirname,'/views'));
 app.set('view engine','ejs');
 const methodOverride = require('method-override');
+const mongoose = require('mongoose');
+const session = require('express-session');
+const flash = require('connect-flash');
 
+app.use(session({
+    secret: 'IAMRAM',
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(flash());
 app.use(express.urlencoded({extended: true}));
 app.use(methodOverride('_method'))
 
-const mongoose = require('mongoose');
 const Product = require('./models/product');
 const Farm = require('./models/farm');
 const { log } = require('console');
 
 const categories = ['fruit', 'veggie', 'dairy'];
 
-mongoose.connect('mongodb://127.0.0.1:27017/farmMarket3')
+mongoose.connect('mongodb://127.0.0.1:27017/flashDemo')
 .then(()=>{
     console.log('MONGO Connected!!!!');
 }).catch((err)=>{
@@ -25,7 +33,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/farmMarket3')
 //Farm routes
 app.get("/farms", async (req, res) => {
     const allFarms = await Farm.find({});
-    res.render("farms/index", { allFarms });
+    res.render("farms/index", { allFarms,messages:req.flash('success') });
 });
 
 app.get('/farms/new', (req, res) => {
@@ -35,6 +43,7 @@ app.get('/farms/new', (req, res) => {
 app.post('/farms',async(req,res)=>{
     const newFarm = new Farm(req.body);
     await newFarm.save();
+    req.flash('success','Farm created');
     res.redirect('/farms');
 });
 app.get('/farms/:id',async (req,res)=>{
@@ -117,6 +126,6 @@ app.delete('/products/:id',async (req,res)=>{
     res.redirect('/products');
 });
 
-app.listen(3000,()=>{
-    console.log('Connected to 3000!!!');
+app.listen(3030,()=>{
+    console.log('Connected to 3030!!!');
 });
