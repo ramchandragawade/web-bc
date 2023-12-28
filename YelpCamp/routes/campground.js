@@ -65,6 +65,10 @@ router.put('/:id', isLoggedIn, validateCampground, catchAsync(async(req,res)=>{
 // delete campground route
 router.delete('/:id',isLoggedIn,catchAsync(async(req,res)=>{
     const {id} = req.params;
+    if(!camp.author.equals(req.user._id)){
+        req.flash('error',`You don't have permission to delete.`);
+        return res.redirect(`/campgrounds/${id}`);        
+    }
     await Campground.findByIdAndDelete(id);
     req.flash('success',`Successfully deleted the campground!`);
     res.redirect(`/campgrounds`);
@@ -72,10 +76,15 @@ router.delete('/:id',isLoggedIn,catchAsync(async(req,res)=>{
 
 // Edit campground form route
 router.get('/:id/edit', isLoggedIn, catchAsync(async(req,res)=>{
-    const camp = await Campground.findById(req.params.id);
+    const { id } = req.params;
+    const camp = await Campground.findById(id);
     if(!camp){
         req.flash('error','Campground not found!');
         return res.redirect('/campgrounds');
+    }
+    if(!camp.author.equals(req.user._id)){
+        req.flash('error',`You don't have permission to update.`);
+        return res.redirect(`/campgrounds/${id}`);        
     }
     res.render('campgrounds/edit', {camp});
 }));
