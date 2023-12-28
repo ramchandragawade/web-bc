@@ -51,7 +51,7 @@
     display: block;
     position: relative;
     width: 150px;
-    min-height: inherit;
+    min-height: 30px;
     padding: 0;
     border: none;
   }
