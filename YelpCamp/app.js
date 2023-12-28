@@ -16,12 +16,14 @@ const path = require('path');
 
 const campgroundRoutes = require('./routes/campground');
 const reviewRoutes = require('./routes/reviews');
+const exp = require('constants');
 
 app.engine('ejs',ejsMate);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
+app.use(express.static('public'));
 
 // Home route
 app.get('/', (req, res) => {
