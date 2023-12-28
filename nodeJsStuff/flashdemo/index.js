@@ -30,10 +30,15 @@ mongoose.connect('mongodb://127.0.0.1:27017/flashDemo')
     console.log('MONGO Failure!!!!'+err);
 });
 
+app.use((req,res,next)=>{
+    res.locals.messages = req.flash('success');
+    next();
+});
+
 //Farm routes
 app.get("/farms", async (req, res) => {
     const allFarms = await Farm.find({});
-    res.render("farms/index", { allFarms,messages:req.flash('success') });
+    res.render("farms/index", { allFarms });
 });
 
 app.get('/farms/new', (req, res) => {
