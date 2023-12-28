@@ -5,25 +5,24 @@ const Campground = require('../models/campground');
 const { isLoggedIn, isAuthor, validateCampground } = require('../middleware');
 const campgroundController = require('../controllers/campground');
 
+router.route('/')
 // Campgroung index route
-router.get('/', campgroundController.index);
+.get(campgroundController.index)
+// Add New campground form submission route(POST)
+.post(isLoggedIn, validateCampground, catchAsync(campgroundController.createCamp));
 
 // New campground form route
 router.get('/new', isLoggedIn, campgroundController.renderNewForm);
 
-// Add New campground form submission route(POST)
-router.post('/', isLoggedIn, validateCampground, catchAsync(campgroundController.createCamp));
-
+router.route('/:id')
 // Show selected campground route
-router.get('/:id', catchAsync(campgroundController.showCamp));
+.get(catchAsync(campgroundController.showCamp))
+// Update edited campground route
+.put(isLoggedIn, isAuthor, validateCampground, catchAsync(campgroundController.updateCamp))
+// delete campground route
+.delete(isLoggedIn, isAuthor, catchAsync(campgroundController.deleteCamp));
 
 // Edit campground form route
 router.get('/:id/edit', isLoggedIn, isAuthor, catchAsync(campgroundController.renderEditForm));
-
-// Update edited campground route
-router.put('/:id', isLoggedIn, isAuthor, validateCampground, catchAsync(campgroundController.updateCamp));
-
-// delete campground route
-router.delete('/:id', isLoggedIn, isAuthor, catchAsync(campgroundController.deleteCamp));
 
 module.exports = router;
