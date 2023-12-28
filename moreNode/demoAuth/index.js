@@ -17,7 +17,11 @@ app.set('view engine','ejs');
 app.set('views','views');
 
 app.use(express.urlencoded({extended:true}));
-app.use(session({secret:'IAMTHEPROBLEM'}));
+app.use(session({
+    secret:'IAMTHEPROBLEM',
+    resave:false,
+    saveUninitialized: true
+}));
 
 app.get('/',(req,res)=>{
     res.send('This is home');
@@ -35,14 +39,14 @@ app.post('/login', async(req,res)=>{
     const {username,password} = req.body;
     const user = await User.findOne({username:username});
     if(!user){
-        res.send('Incorrect username or password');
+        return res.send('Incorrect username or password');
     }
     const isCorrectPass = await bcrypt.compare(password,user.password);
     if(isCorrectPass) {
         req.session.user_id = user._id;
-        res.send('Welcome '+user.username);
+        return res.redirect('/secret');
     } else {
-        res.send('Incorrect username or password');
+        return res.redirect('/login');
     }
 });
 
