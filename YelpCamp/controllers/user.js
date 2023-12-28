@@ -29,7 +29,7 @@ module.exports = {
         res.render('users/login');
     },
 
-    // submit login req and auth
+    // submit login req & auth
     postLogin: async(req,res)=>{
         req.flash('success',`Welcome back ${req.body.username}!!!`);
         const redirectUrl = res.locals.returnTo || '/campgrounds';
