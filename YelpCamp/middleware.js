@@ -1,6 +1,7 @@
 const { campgroundSchema, reviewSchema } = require('./validationSchemas');
 const ExpressError = require('./utils/ExpressError');
 const Campground = require('./models/campground');
+const Review = require('./models/review');
 
 module.exports.isLoggedIn = (req,res,next)=>{
     if(!req.isAuthenticated()) {
@@ -42,13 +43,24 @@ module.exports.validateReview = (req,res,next)=>{
     }
 }
 
-// Check if user is author
+// Check if user is author of camp
 module.exports.isAuthor = async(req,res,next)=>{
     const {id} = req.params;
     const camp = await Campground.findById(id);
     if(!camp.author.equals(req.user._id)){
         req.flash('error',`You don't have permission to update.`);
         return res.redirect(`/campgrounds/${id}`);        
+    }
+    next();
+}
+
+// Check if user is author of review
+module.exports.isReviewAuthor = async(req,res,next)=>{
+    const { id, reviewId } = req.params;
+    const review = await Review.findById(reviewId);
+    if(!review.author.equals(req.user._id)){
+        req.flash('error',`You don't have permission to delete.`);
+        return res.redirect(`/campgrounds/${id}`);
     }
     next();
 }
