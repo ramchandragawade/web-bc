@@ -5,8 +5,7 @@ const catchAsync = require('../utils/catchAsync');
 const Campground = require('../models/campground');
 const {campgroundSchema} = require('../validationSchemas');
 
-
-
+// Campground Validator middleware
 const validateCampground = (req,res,next)=>{
     const {error} = campgroundSchema.validate(req.body);
     if(error) {
