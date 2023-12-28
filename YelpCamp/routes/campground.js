@@ -25,6 +25,10 @@ router.get('/', async(req,res)=>{
 
 // New campground form route
 router.get('/new', (req,res)=>{
+    if(!req.isAuthenticated()) {
+        req.flash('error', 'You must be signed in to add new Campground');
+        return res.redirect('/login');
+    }
     res.render('campgrounds/new');
 });
 
