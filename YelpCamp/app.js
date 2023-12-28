@@ -38,14 +38,14 @@ const sessionCfg = {
 app.use(session(sessionCfg));
 app.use(flash());
 
+app.use((req,res,next)=>{
+    res.locals.success = req.flash('success');
+    res.locals.error = req.flash('error');
+    next();
+});
 // Home route
 app.get('/', (req, res) => {
     res.render('home');
-});
-
-app.use((req,res,next)=>{
-    res.locals.success = req.flash('success');
-    next();
 });
 
 app.use('/campgrounds',campgroundRoutes);
