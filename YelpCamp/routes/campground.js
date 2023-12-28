@@ -66,6 +66,10 @@ router.delete('/:id',catchAsync(async(req,res)=>{
 // Edit campground form route
 router.get('/:id/edit',catchAsync(async(req,res)=>{
     const camp = await Campground.findById(req.params.id);
+    if(!camp){
+        req.flash('error','Campground not found!');
+        return res.redirect('/campgrounds');
+    }
     res.render('campgrounds/edit', {camp});
 }));
 
