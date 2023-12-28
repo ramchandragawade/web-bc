@@ -1,5 +1,6 @@
 const Campground = require('../models/campground');
 module.exports = {
+
     // Campgroung index route
     index : async(req,res)=>{
         const campgrounds = await Campground.find({});
