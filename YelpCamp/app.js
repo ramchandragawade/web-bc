@@ -24,6 +24,18 @@ app.use(express.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname,'public')));
 
+const session = require('express-session');
+const sessionCfg = {
+    secret: 'CAMPGROUNDSECRET123',
+    resave:false,
+    saveUninitialized: true,
+    cookie: {
+        httpOnly: true,
+        maxAge: 1000*60*60*24*7
+    }
+}
+app.use(session(sessionCfg));
+
 // Home route
 app.get('/', (req, res) => {
     res.render('home');
