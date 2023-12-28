@@ -53,14 +53,13 @@ router.get('/:id', catchAsync(async(req,res)=>{
 router.put('/:id', isLoggedIn, validateCampground, catchAsync(async(req,res)=>{
     const {id} = req.params;
     const camp = await Campground.findById(id);
-    if(camp.author.equals(req.user._id)){
-        const updatedCamp = await Campground.findByIdAndUpdate(id,{...req.body.campground},{new:true});
-        req.flash('success',`Successfully updated ${updatedCamp.title}!`);
-        res.redirect(`/campgrounds/${updatedCamp._id}`);    
-    } else {
+    if(!camp.author.equals(req.user._id)){
         req.flash('error',`You don't have permission to update.`);
-        res.redirect(`/campgrounds/${id}`);  
+        return res.redirect(`/campgrounds/${id}`);        
     }
+    const updatedCamp = await Campground.findByIdAndUpdate(id,{...req.body.campground},{new:true});
+    req.flash('success',`Successfully updated ${updatedCamp.title}!`);
+    res.redirect(`/campgrounds/${updatedCamp._id}`);
 }));
 
 // delete campground route
