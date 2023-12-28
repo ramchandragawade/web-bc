@@ -25,6 +25,7 @@ app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname,'public')));
 
 const session = require('express-session');
+const flash = require('connect-flash');
 const sessionCfg = {
     secret: 'CAMPGROUNDSECRET123',
     resave:false,
@@ -35,10 +36,16 @@ const sessionCfg = {
     }
 }
 app.use(session(sessionCfg));
+app.use(flash());
 
 // Home route
 app.get('/', (req, res) => {
     res.render('home');
+});
+
+app.use((req,res,next)=>{
+    res.locals.success = req.flash('success');
+    next();
 });
 
 app.use('/campgrounds',campgroundRoutes);

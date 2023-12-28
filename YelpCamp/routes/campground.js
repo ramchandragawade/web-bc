@@ -32,7 +32,8 @@ router.get('/new', (req,res)=>{
 router.post('/',validateCampground, catchAsync(async(req,res,next)=>{
     const newCamp = new Campground(req.body.campground);
     await newCamp.save();
-    res.redirect('/campgrounds');
+    req.flash('success','Successfully added a new campground!');
+    res.redirect('/campgrounds/'+newCamp._id);
 }));
 
 // Show selected campground route
