@@ -38,6 +38,7 @@
         </div>
     </div>
     <div class="col-6">
+        <% if(currentUser){ %>
         <div class="card mb-3">
             <div class="card-body">
                 <h5 class="card-title">Leave a Review</h5>
@@ -60,6 +61,7 @@
                 </form>    
             </div>
         </div>
+        <% } %>
         <div class="mb-3">
             <% for(let review of camp.reviews){ %>
                 <div class="card mb-2">
