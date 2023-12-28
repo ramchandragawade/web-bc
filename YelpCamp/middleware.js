@@ -1,4 +1,4 @@
-const { campgroundSchema } = require('./validationSchemas');
+const { campgroundSchema, reviewSchema } = require('./validationSchemas');
 const ExpressError = require('./utils/ExpressError');
 const Campground = require('./models/campground');
 
@@ -21,6 +21,18 @@ module.exports.storeReturnTo = (req, res, next) => {
 // Campground Validator middleware
 module.exports.validateCampground = (req,res,next)=>{
     const {error} = campgroundSchema.validate(req.body);
+    if(error) {
+        console.log(error);
+        const msg = error.details.map(el=>el.message).join(',');
+        throw new ExpressError(msg, 400);
+    } else {
+        next();
+    }
+}
+
+// review validator middleware
+module.exports.validateReview = (req,res,next)=>{
+    const {error} = reviewSchema.validate(req.body);
     if(error) {
         console.log(error);
         const msg = error.details.map(el=>el.message).join(',');
