@@ -3,6 +3,14 @@ const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const ejsMate = require('ejs-mate');
 const ExpressError = require('./utils/ExpressError');
+const path = require('path');
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
+const User = require('./models/user');
+
+const campgroundRoutes = require('./routes/campground');
+const reviewRoutes = require('./routes/review');
+const userRoutes = require('./routes/user');
 
 mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp');
 const db = mongoose.connection;
@@ -12,10 +20,6 @@ db.once('open', ()=>{
 });
 
 const app = express();
-const path = require('path');
-
-const campgroundRoutes = require('./routes/campground');
-const reviewRoutes = require('./routes/reviews');
 
 app.engine('ejs',ejsMate);
 app.set('view engine', 'ejs');
@@ -37,19 +41,35 @@ const sessionCfg = {
 }
 app.use(session(sessionCfg));
 app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.use((req,res,next)=>{
+    res.locals.currentUser = req.user;
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
     next();
 });
+
+app.get('/fakeuser',async(req,res)=>{
+    const user = new User({email:'rrrr@ggg.com',username:'myuser'});
+    const newUser = await User.register(user,'chicken');
+    res.send(newUser);
+});
+
+// Set routers
+app.use('/',userRoutes);
+app.use('/campgrounds',campgroundRoutes);
+app.use('/campgrounds/:id/reviews',reviewRoutes);
+
 // Home route
 app.get('/', (req, res) => {
     res.render('home');
 });
-
-app.use('/campgrounds',campgroundRoutes);
-app.use('/campgrounds/:id/reviews',reviewRoutes);
 
 // Error handler
 app.all('*',(req,res,next)=>{
