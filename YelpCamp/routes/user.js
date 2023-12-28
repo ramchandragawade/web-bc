@@ -6,20 +6,21 @@ const passport = require('passport');
 const userController = require('../controllers/user');
 const { storeReturnTo } = require('../middleware');
 
+router.route('/register')
 // show register form
-router.get('/register',userController.showRegisterForm);
-
+.get(userController.showRegisterForm)
 // register the user
-router.post('/register', catchAsync(userController.registerUser));
+.post(catchAsync(userController.registerUser));
 
+router.route('/login')
 //show login form
-router.get('/login',userController.showLoginForm);
-
+.get(userController.showLoginForm)
 // submit login req & auth
-router.post('/login',
+.post(
     storeReturnTo,
     passport.authenticate('local',{failureFlash:true,failureRedirect:'/login'}),
-    userController.postLogin);
+    userController.postLogin
+    );
 
 //logout the user
 router.get('/logout',userController.logoutUser);
