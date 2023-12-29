@@ -3,7 +3,6 @@ const Campground = require('../models/campground');
 const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
 const mapboxToken = process.env.MAPBOX_TOKEN;
 const geoCoder = mbxGeocoding({accessToken:mapboxToken});
-const {sampleImgs} = require('../seeds/serveImgs');
 module.exports = {
 
     // Campgroung index route
@@ -84,7 +83,7 @@ module.exports = {
         const images = camp.images;
         images.forEach((img) => {
             // TODO: Temp added if condition to avoid deleting the seeds imgs
-            if(!sampleImgs.map(itm=>itm.filename).includes(img.filename)) {
+            if(!img.filename.includes('/seeds/')) {
                 cloudinary.uploader.destroy(img.filename);
             }
         });
