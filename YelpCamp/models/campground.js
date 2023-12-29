@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const { campgroundSchema } = require("../validationSchemas");
 const Review = require('./review');
 const Schema = mongoose.Schema;
+const opts = { toJSON: { virtuals: true } };
 const ImageSchema = new Schema({
     url: String,
     filename: String
@@ -10,6 +11,7 @@ const ImageSchema = new Schema({
 ImageSchema.virtual('thumbnail').get(function(){
     return this.url.replace('/upload','/upload/w_200');
 });
+
 const CampgroundSchema = new Schema({
     title: {
         type: String,
@@ -45,6 +47,19 @@ const CampgroundSchema = new Schema({
             ref: 'Review'
         }
     ]
+}, opts);
+
+CampgroundSchema.virtual('geoData').get(function(){
+    return {
+        properties: {
+            popUpMark:`
+                <h6 class="mt-2 mb-1 me-3 lh-1"><a href="/campgrounds/${this._id}">${this.title}</a></h6>
+                <p class="mb-1 mt-1 text-muted">${this.location}</p>
+                `
+            ,
+        },
+        geometry: this.geometry
+    };
 });
 
 CampgroundSchema.post('findOneAndDelete', async (camp)=>{

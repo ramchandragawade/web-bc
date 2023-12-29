@@ -1,4 +1,5 @@
 <% layout('layouts/boilerplate') %>
+<div id='map' style='width: auto; height: 300px;'></div>
 <!-- <h2><a href="/campgrounds/new">Add new campground</a></h2> -->
 <h1>Campgrounds</h1>
 <% for(let camp of campgrounds) { %>
@@ -22,3 +23,8 @@
         </div>
     </div>
 <% } %>
+<script>
+    const mapboxtoken = '<%- process.env.MAPBOX_TOKEN %>';
+    const campGeoData = {features:<%- JSON.stringify(campgrounds.map(itm=>itm.geoData)) %>};
+</script>
+<script src="/javascripts/indexMapCluster.js"></script>
