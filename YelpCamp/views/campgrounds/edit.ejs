@@ -48,7 +48,8 @@
                         <input type="checkbox" name="deleteImages[]" id="image-<%= i %>" value="<%= img.filename %>">
                     </div>
                     <label for="image-<%= i %>">Delete?</label>
-                    <img src="<%=img.url%>" alt="" class="img-thumbnail">
+                    <img src="<%=img.thumbnail%>" alt="" class="img-thumbnail">
+                    <br>
                 <% }) %>
             </div>
 
