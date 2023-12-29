@@ -14,6 +14,12 @@ const sample = (array)=>array[Math.floor(Math.random()*array.length)];
 
 const {sampleImgs} = require('./serveImgs');
 
+const sampleGeo = [
+    { type: 'Point', coordinates: [-97.7437, 30.271129] },
+    { type: 'Point', coordinates: [-115.139421, 36.167398] },
+    { type: 'Point', coordinates: [-118.329523, 34.098003] }
+];
+
 const getRandomImg = (prev) =>{
     const index = Math.floor(Math.random()*10);
     if(prev==index){
@@ -38,6 +44,7 @@ const seedDB = async() =>{
                 firstImg.img,
                 secondImg.img
             ],
+            geometry: sampleGeo.at(Math.floor(Math.random()*3)),
             description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea aliquid quidem cumque amet. Facilis autem, quos, facere quidem laudantium. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea aliquid quidem cumque amet. Facilis autem, quos, facere quidem laudantium',
             price
         })
