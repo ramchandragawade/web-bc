@@ -113,7 +113,7 @@ map.on('load', () => {
     // description HTML from its properties.
     map.on('click', 'unclustered-point', (e) => {
         const coordinates = e.features[0].geometry.coordinates.slice();
-        const props = e.features[0].properties;
+        const { popUpMark } = e.features[0].properties;
 
         // Ensure that if the map is zoomed out such that
         // multiple copies of the feature are visible, the
@@ -124,9 +124,7 @@ map.on('load', () => {
 
         new mapboxgl.Popup()
             .setLngLat(coordinates)
-            .setHTML(
-                `${props.popUpMark}`
-            )
+            .setHTML(`${popUpMark}`)
             .addTo(map);
     });
 
