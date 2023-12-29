@@ -4,12 +4,15 @@ const catchAsync = require('../utils/catchAsync');
 const Campground = require('../models/campground');
 const { isLoggedIn, isAuthor, validateCampground } = require('../middleware');
 const campgroundController = require('../controllers/campground');
+const multer  = require('multer');
+const {storage,cloudinary} = require('../cloudinary');
+const upload = multer({ storage });
 
 // (get) Campgroung index route
 // (post) Add New campground form submission route(POST)
 router.route('/')
 .get(campgroundController.index)
-.post(isLoggedIn, validateCampground, catchAsync(campgroundController.createCamp));
+.post(isLoggedIn, upload.array('image'), validateCampground, catchAsync(campgroundController.createCamp));
 
 // New campground form route
 router.get('/new', isLoggedIn, campgroundController.renderNewForm);
@@ -19,7 +22,7 @@ router.get('/new', isLoggedIn, campgroundController.renderNewForm);
 // (delete) delete campground route
 router.route('/:id')
 .get(catchAsync(campgroundController.showCamp))
-.put(isLoggedIn, isAuthor, validateCampground, catchAsync(campgroundController.updateCamp))
+.put(isLoggedIn, isAuthor, upload.array('image'), validateCampground, catchAsync(campgroundController.updateCamp))
 .delete(isLoggedIn, isAuthor, catchAsync(campgroundController.deleteCamp));
 
 // Edit campground form route
