@@ -45,7 +45,7 @@ const seedDB = async() =>{
                 secondImg.img
             ],
             geometry: sampleGeo.at(Math.floor(Math.random()*3)),
-            description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea aliquid quidem cumque amet. Facilis autem, quos, facere quidem laudantium. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea aliquid quidem cumque amet. Facilis autem, quos, facere quidem laudantium',
+            description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea aliquid quidem cumque amet. Facilis autem, quos, facere quidem laudantium.',
             price
         })
         await camp.save();
