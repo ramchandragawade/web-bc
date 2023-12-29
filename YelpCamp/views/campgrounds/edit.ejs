@@ -19,11 +19,14 @@
                 </div> 
             </div>
             <div class="mb-3">
-                <label class="form-label" for="image">Add More Images</label>
-                <input class="form-control" type="file" name="image" id="" multiple required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div> 
+                <label class="form-label" for="price">Price</label>
+                <div class="input-group">
+                    <span class="input-group-text" id="price-label">$</span>
+                    <input type="text" value="<%= camp.price %>" class="form-control" id="price" name="campground[price]" aria-label="Dollar amount (with dot and two decimal places)" aria-describedby="price-label" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="description">Description</label>
@@ -33,14 +36,11 @@
                 </div>
             </div>
             <div class="mb-3">
-                <label class="form-label" for="price">Price</label>
-                <div class="input-group">
-                    <span class="input-group-text" id="price-label">$</span>
-                    <input type="text" value="<%= camp.price %>" class="form-control" id="price" name="campground[price]" aria-label="Dollar amount (with dot and two decimal places)" aria-describedby="price-label" required>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                </div>
+                <label class="form-label" for="image">Add More Images</label>
+                <input class="form-control" type="file" name="image" id="" multiple required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div> 
             </div>
             <div class="mb-3">
                 <button class="btn btn-success">Update Campground</button>

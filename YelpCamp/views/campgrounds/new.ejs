@@ -17,6 +17,23 @@
                     Looks good!
                 </div>  
             </div>
+            <div class="mb-3">
+                <label class="form-label" for="price">Price</label>
+                <div class="input-group">
+                    <span class="input-group-text" id="price-label">$</span>
+                    <input type="text" class="form-control" id="price" name="campground[price]" required aria-label="Dollar amount (with dot and two decimal places)" aria-describedby="price-label">
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>    
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="description">Description</label>
+                <textarea class="form-control" name="campground[description]" id="description" rows="5" required></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div> 
+            </div>
             <!-- <div class="mb-3">
                 <label class="form-label" for="image">Image URL</label>
                 <input class="form-control" type="text" name="campground[image]" id="image" required>
@@ -30,23 +47,6 @@
                 <div class="valid-feedback">
                     Looks good!
                 </div> 
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="description">Description</label>
-                <textarea class="form-control" name="campground[description]" id="description" rows="5" required></textarea>
-                <div class="valid-feedback">
-                    Looks good!
-                </div> 
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="price">Price</label>
-                <div class="input-group">
-                    <span class="input-group-text" id="price-label">$</span>
-                    <input type="text" class="form-control" id="price" name="campground[price]" required aria-label="Dollar amount (with dot and two decimal places)" aria-describedby="price-label">
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                </div>    
             </div>
             <div class="mb-3">
                 <button class="btn btn-success">Add Campground</button>
