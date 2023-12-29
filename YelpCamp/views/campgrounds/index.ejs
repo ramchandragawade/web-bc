@@ -25,6 +25,6 @@
 <% } %>
 <script>
     const mapboxtoken = '<%- process.env.MAPBOX_TOKEN %>';
-    const campGeoData = {features:<%- JSON.stringify(campgrounds.map(itm=>({geometry: itm.geometry}))) %>};
+    const campGeoData = {features:<%- JSON.stringify(campgrounds.map(itm=>itm.geoData)) %>};
 </script>
 <script src="/javascripts/indexMapCluster.js"></script>
