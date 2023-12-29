@@ -3,7 +3,7 @@ const Campground = require('../models/campground');
 const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
 const mapboxToken = process.env.MAPBOX_TOKEN;
 const geoCoder = mbxGeocoding({accessToken:mapboxToken});
-
+const {sampleImgs} = require('../seeds/serveImgs');
 module.exports = {
 
     // Campgroung index route
@@ -80,6 +80,14 @@ module.exports = {
     // delete campground route
     deleteCamp: async(req,res)=>{
         const {id} = req.params;
+        const camp = await Campground.findById(id);
+        const images = camp.images;
+        images.forEach((img) => {
+            // TODO: Temp added if condition to avoid deleting the seeds imgs
+            if(!sampleImgs.map(itm=>itm.filename).includes(img.filename)) {
+                cloudinary.uploader.destroy(img.filename);
+            }
+        });
         await Campground.findByIdAndDelete(id);
         req.flash('success',`Successfully deleted the campground!`);
         res.redirect(`/campgrounds`);
