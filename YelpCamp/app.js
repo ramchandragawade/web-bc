@@ -1,3 +1,7 @@
+if(process.env.NODE_ENV!='production'){
+    require('dotenv').config();
+}
+console.log(process.env.NODE_ENV,process.env.SECRET);
 const express = require('express');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
