@@ -9,7 +9,15 @@ const ImageSchema = new Schema({
 });
 
 ImageSchema.virtual('thumbnail').get(function(){
-    return this.url.replace('/upload','/upload/w_200');
+    return this.url.replace('/upload','/upload/w_150');
+});
+
+ImageSchema.virtual('indexThumb').get(function(){
+    return this.url.replace('/upload','/upload/w_400');
+});
+
+ImageSchema.virtual('campThumb').get(function(){
+    return this.url.replace('/upload','/upload/w_1000');
 });
 
 const CampgroundSchema = new Schema({

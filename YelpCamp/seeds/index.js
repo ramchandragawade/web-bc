@@ -15,7 +15,7 @@ const sample = (array)=>array[Math.floor(Math.random()*array.length)];
 const {sampleImgs} = require('./serveImgs');
 
 const getRandomImg = (prev) =>{
-    const index = Math.floor(Math.random()*10);
+    const index = Math.floor(Math.random()*sampleImgs.length);
     if(prev==index){
         return getRandomImg(prev);
     } else {

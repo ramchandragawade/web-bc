@@ -12,10 +12,6 @@ module.exports.sampleImgs = [
         filename: 'YelpCamp/seeds/axdekm8lmx2g6bibg0i9'
     },
     {
-        url: 'https://res.cloudinary.com/duhlvrita/image/upload/v1703881876/YelpCamp/seeds/t1oikh7cyqt1sxzwqgb1.jpg',
-        filename: 'YelpCamp/seeds/t1oikh7cyqt1sxzwqgb1'
-    },
-    {
         url: 'https://res.cloudinary.com/duhlvrita/image/upload/v1703881876/YelpCamp/seeds/qwz1lutr1ckjss64ioxz.jpg',
         filename: 'YelpCamp/seeds/qwz1lutr1ckjss64ioxz'
     },
