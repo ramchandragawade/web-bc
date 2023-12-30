@@ -125,13 +125,10 @@ app.get('/', (req, res) => {
 
 // Error handler
 app.all('*',(req,res,next)=>{
-    console.log('1',req.params);
     next(new ExpressError('Page not found!!!',404));
-    console.log('2');
 });
 app.use((err, req, res, next) => {
     const { statusCode = 500 } = err;
-    console.log('we here', err);
     if (!err.message)
         err.message = 'Something went wrong';
     res.status(statusCode).render('error', { err });
