@@ -14,12 +14,13 @@ const User = require('./models/user');
 const mongoSanitize = require('express-mongo-sanitize');
 const session = require('express-session');
 const flash = require('connect-flash');
-
 const campgroundRoutes = require('./routes/campground');
 const reviewRoutes = require('./routes/review');
 const userRoutes = require('./routes/user');
 const { log } = require('console');
+const dbURL = process.env.DB_URL;
 
+// mongoose.connect(dbURL); server one
 mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp');
 const db = mongoose.connection;
 db.on('error',console.error.bind(console, 'Connection error'));
