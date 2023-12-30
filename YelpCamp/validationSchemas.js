@@ -14,7 +14,6 @@ const extension = (joi) => ({
                   allowedTags: [],
                   allowedAttributes: {},
                 });
-                console.log('isclean:', clean);
                 if (clean) {
                     return clean;
                 }
