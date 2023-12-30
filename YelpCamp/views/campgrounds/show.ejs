@@ -2,7 +2,6 @@
 <link rel="stylesheet" href="/stylesheets/stars.css">
 <div class="row">
     <div class="col-6">
-        <div id='map' class="map"></div>
         <div id="campCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <% camp.images.forEach((img,i)=>{ %>
@@ -59,8 +58,9 @@
         </div>
     </div>
     <div class="col-6">
+        <div id='map' class="map"></div>
         <% if(currentUser){ %>
-        <div class="card mb-3">
+        <div class="card my-3">
             <div class="card-body">
                 <h5 class="card-title">Leave a Review</h5>
                 <form action="/campgrounds/<%=camp._id%>/reviews" class="validate-form  mb-3" method="POST" novalidate>
