@@ -1,7 +1,6 @@
 if(process.env.NODE_ENV!='production'){
     require('dotenv').config();
 }
-console.log(process.env.NODE_ENV,process.env.SECRET);
 const express = require('express');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
@@ -9,12 +8,17 @@ const ejsMate = require('ejs-mate');
 const ExpressError = require('./utils/ExpressError');
 const path = require('path');
 const passport = require('passport');
+const helmet = require('helmet');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user');
+const mongoSanitize = require('express-mongo-sanitize');
+const session = require('express-session');
+const flash = require('connect-flash');
 
 const campgroundRoutes = require('./routes/campground');
 const reviewRoutes = require('./routes/review');
 const userRoutes = require('./routes/user');
+const { log } = require('console');
 
 mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp');
 const db = mongoose.connection;
@@ -31,15 +35,65 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname,'public')));
+app.use(mongoSanitize({
+    replaceWith: '_'
+}));
 
-const session = require('express-session');
-const flash = require('connect-flash');
+app.use(helmet());
+
+const scriptSrcUrls = [
+    "https://stackpath.bootstrapcdn.com",
+    "https://api.tiles.mapbox.com",
+    "https://api.mapbox.com",
+    "https://kit.fontawesome.com",
+    "https://cdnjs.cloudflare.com",
+    "https://cdn.jsdelivr.net",
+];
+const styleSrcUrls = [
+    "https://kit-free.fontawesome.com",
+    "https://cdn.jsdelivr.net",
+    "https://stackpath.bootstrapcdn.com",
+    "https://api.mapbox.com",
+    "https://api.tiles.mapbox.com",
+    "https://fonts.googleapis.com",
+    "https://use.fontawesome.com",
+];
+const connectSrcUrls = [
+    "https://api.mapbox.com",
+    "https://*.tiles.mapbox.com",
+    "https://events.mapbox.com",
+];
+const fontSrcUrls = [];
+app.use(
+    helmet.contentSecurityPolicy({
+        directives: {
+            defaultSrc: [],
+            connectSrc: ["'self'", ...connectSrcUrls],
+            scriptSrc: ["'unsafe-inline'", "'self'", ...scriptSrcUrls],
+            styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
+            workerSrc: ["'self'", "blob:"],
+            childSrc: ["blob:"],
+            objectSrc: [],
+            imgSrc: [
+                "'self'",
+                "blob:",
+                "data:",
+                "https://res.cloudinary.com/duhlvrita/", //SHOULD MATCH YOUR CLOUDINARY ACCOUNT! 
+                "https://images.unsplash.com",
+            ],
+            fontSrc: ["'self'", ...fontSrcUrls],
+        },
+    })
+);
+
 const sessionCfg = {
-    secret: 'CAMPGROUNDSECRET123',
+    name: 'sesh',
+    secret: process.env.SESSION_CFG_SECRET,
     resave:false,
     saveUninitialized: true,
     cookie: {
         httpOnly: true,
+        // secure:true,
         maxAge: 1000*60*60*24*7
     }
 }
@@ -59,12 +113,6 @@ app.use((req,res,next)=>{
     next();
 });
 
-app.get('/fakeuser',async(req,res)=>{
-    const user = new User({email:'rrrr@ggg.com',username:'myuser'});
-    const newUser = await User.register(user,'chicken');
-    res.send(newUser);
-});
-
 // Set routers
 app.use('/',userRoutes);
 app.use('/campgrounds',campgroundRoutes);
@@ -72,7 +120,7 @@ app.use('/campgrounds/:id/reviews',reviewRoutes);
 
 // Home route
 app.get('/', (req, res) => {
-    res.render('home');
+    return res.render('home');
 });
 
 // Error handler
