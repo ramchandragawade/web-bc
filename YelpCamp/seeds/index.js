@@ -1,9 +1,12 @@
+if(process.env.NODE_ENV!='production'){
+    require('dotenv').config();
+}
 const mongoose = require('mongoose');
 const Campground = require('../models/campground');
 const cities = require('./cities');
 const {places,descriptors} = require('./seedHelpers');
-
-mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp');
+const dbURL = process.env.DB_URL || 'mongodb://127.0.0.1:27017/yelp-camp';
+mongoose.connect(dbURL);
 const db = mongoose.connection;
 db.on('error',console.error.bind(console, 'Connection error'));
 db.once('open', ()=>{
@@ -32,6 +35,7 @@ const seedDB = async() =>{
         const firstImg = getRandomImg();
         const secondImg = getRandomImg(firstImg.index);
         const camp = new Campground({
+            // server one author: '65904905bee7c811580d0835',
             author: '658dd7d3130d4755e816d007',
             location: `${cityObj.city}, ${cityObj.state}`,
             title: `${sample(descriptors)} ${sample(places)}`,

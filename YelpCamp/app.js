@@ -14,13 +14,13 @@ const User = require('./models/user');
 const mongoSanitize = require('express-mongo-sanitize');
 const session = require('express-session');
 const flash = require('connect-flash');
-
 const campgroundRoutes = require('./routes/campground');
 const reviewRoutes = require('./routes/review');
 const userRoutes = require('./routes/user');
-const { log } = require('console');
+const MongoStore = require('connect-mongo');
 
-mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp');
+const dbURL = process.env.DB_URL || 'mongodb://127.0.0.1:27017/yelp-camp';
+mongoose.connect(dbURL);
 const db = mongoose.connection;
 db.on('error',console.error.bind(console, 'Connection error'));
 db.once('open', ()=>{
@@ -86,8 +86,18 @@ app.use(
     })
 );
 
+const store = MongoStore.create({
+    mongoUrl: dbURL,
+    touchAfter: 24 * 60 * 60
+});
+
+store.on('error', function (e) {
+    console.log('Session store err:',e);
+})
+
 const sessionCfg = {
     name: 'sesh',
+    store,
     secret: process.env.SESSION_CFG_SECRET,
     resave:false,
     saveUninitialized: true,
