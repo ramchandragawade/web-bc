@@ -5,10 +5,10 @@ const mongoose = require('mongoose');
 const Campground = require('../models/campground');
 const cities = require('./cities');
 const {places,descriptors} = require('./seedHelpers');
-const dbURL = process.env.DB_URL;
-
+// const dbURL = process.env.DB_URL;
 // mongoose.connect(dbURL); server one
-mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp');
+const dbURL = 'mongodb://127.0.0.1:27017/yelp-camp';
+mongoose.connect(dbURL);
 const db = mongoose.connection;
 db.on('error',console.error.bind(console, 'Connection error'));
 db.once('open', ()=>{
