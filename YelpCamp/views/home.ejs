@@ -12,7 +12,7 @@
         <header class="mb-auto">
             <div>
                 <h3 class="float-md-start mb-0">YelpCamp!</h3>
-                <nav class="nav nav-masthead justify-content-center float-md-right">
+                <nav class="nav nav-masthead justify-content-center float-md-end">
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                     <a class="nav-link" href="/campgrounds">Campgrounds</a>
                     <% if(!currentUser) { %>
@@ -27,16 +27,15 @@
         
         <main class="px-3">
             <h1>YelpCamp!</h1>
-            <p class="lead"> Welcome to YelpCamp!<br>
+            <h5 class="lead fw-light fst-italic">Welcome to YelpCamp!</h5>
+            <p class="lead fst-italic">
                 Jump right in and explore our many campgrounds.<br>
                 Feel free to share some of your own and comment on others!</p>
             <a href="/campgrounds" class="btn btn-lg btn-secondary fw-bold border-white bg-white">View
                 Campgrounds</a>
         </main>
-        <footer class="footer bg-dark py-3 mt-auto text-center">
-            <div class="container">
-                <span class="text-white-50">&copy;YelpCamp 2024</span>
-            </div>
+        <footer class="mt-auto text-white-50">
+            <p>&copy;YelpCamp 2024</p>
         </footer>
     </div>
 
